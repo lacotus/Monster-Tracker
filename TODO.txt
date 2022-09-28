@@ -1,0 +1,11 @@
+==========
+== TODO ==
+==========
+
+2. Research FlexBox
+
+===============
+== Completed ==
+===============
+1. Setup top bar (MainHeader.vue) - done
+
