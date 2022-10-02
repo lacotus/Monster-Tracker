@@ -4,8 +4,13 @@
 
 <script>
 
-export default {
+import MonsterInstance from './MonsterInstance.vue'
+
+export default {	
 	name: 'MonsterArea',
+	components: {
+		MonsterInstance
+	},
 	created: function() {
 		window.addEventListener("resize", this.calcHeight);
 	},	
@@ -18,10 +23,21 @@ export default {
 			mainHeight = mainHeight - 125; /* MainTitle height plus a little extra to account for padding */
 			document.getElementById('main').style.height = mainHeight + 'px';
 			console.log('Window Height: ' + mainHeight);
+		},
+
+		addMonster() {
+			var instance = new MonsterInstance();
+			instance.$mount()
+			var rent = document.getElementById('main')
+			rent.appendChild(instance.$el)
 		}
 	},
 	mounted: function()  {
 		this.calcHeight();
+		this.$root.$on('NewMonster', () => {
+			this.addMonster()
+		});
+		this.addMonster()
 	},
 	unmounted: function() {
 		window.removeEventListener("resize", this.calcHeight);
