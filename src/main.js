@@ -1,4 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import MonsterInstance from './components/MonsterInstance.vue'
 
-createApp(App).mount('#app')
+const myApp = createApp(App)
+
+myApp.component('monsterInstance', MonsterInstance)
+
+myApp.mount('#app')
+

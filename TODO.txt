@@ -1,11 +1,14 @@
-==========
+=========
 == TODO ==
 ==========
 
-2. Research FlexBox
+5. Add top row in Monster object
 
 ===============
 == Completed ==
 ===============
 1. Setup top bar (MainHeader.vue) - done
+4. Set Monster object width / height - done
+3. Start work on Monster object - done
+2. Research FlexBox - done
 

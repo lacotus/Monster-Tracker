@@ -20,6 +20,9 @@ export default {
 		writeWindowWidth(){
 			console.log(window.innerWidth);
 			console.log(window.innerHeight);
+
+			console.log("MainHeader width: " + document.getElementById("container").offsetWidth);
+			console.log("MainHeader height: " + document.getElementById("container").offsetHeight);
 		}
 	}
 }
