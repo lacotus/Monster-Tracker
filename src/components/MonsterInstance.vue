@@ -26,10 +26,10 @@
 			</div>
 
 			<!-- Info container -->
-			<div id="divInfoContainer" class="divInfoContainerC">
-				<div id="divICRow1" class="rowC"><label class="rowLabelC roundedTopLeft" >HP</label><input class="rowInputC" type="text"></div>
-				<div id="divICRow2"></div>
-				<div id="divICRow2"></div>
+			<div id="divInfoContainer" class="divInfoContainerC" style="border-radius: 0px 0px 10px 0px">
+				<div id="divICRow1" class="rowC"><label class="rowLabelC rowItemSize">HP</label><input class="rowInputC rowItemSize" type="text"></div>
+				<div id="divICRow2" class="rowC"><input class="rowInputC rowItemSize" type="text"><label class="rowLabelC rowItemSize">AC</label></div>
+				<div id="divICRow2" class="rowC"><label class="rowLabelC rowItemSize">INT</label><input class="rowInputC rowItemSize" type="text" style="border-radius: 0px 0px 15px 0px"></div>
 			</div>
 		</div>
 	</div>
@@ -78,7 +78,6 @@ export default {
 
 	.divInfoContainerC {
 		border: 1px solid black;
-		border-radius: 15px;
 		width: 26.7%;
 		height: 100%;
 	}
@@ -121,12 +120,8 @@ export default {
 		height: 320px;
 	}
 
-	.roundedTopLeft {
-		border-radius: 0px 0px 0px 15px;
-	}
-
 	.rowC {
-		border: 1px solid red;
+		/*border: 1px solid red;*/
 		display: flex;
 		flex-direction: row;
 		width: 100%;
@@ -139,14 +134,22 @@ export default {
 		color: white;
 		display: flex;
 		font-family: "Cutive";
+		font-size: 25px;
 		justify-content: center;
-		width: 50%;
-		height: 100%;
 	}
 
 	.rowInputC {
+		border: 0px;
+		font-family: "Cutive";
+		font-size: 25px;
+		outline: none;
+		padding: 0px;
+		text-align: center;
+	}
+
+	.rowItemSize {
 		width: 50%;
-		height: 75px;
+		height: 100%;
 	}
 
 	.scrWeaponsC {
