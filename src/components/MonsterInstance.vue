@@ -2,23 +2,23 @@
 	<div id="MonsterContainer" class="MonsterContainer">
 
 		<!-- Top bar -->
-		<div id="divTopBar" class="divTopBar">
+		<div id="divTopBar" class="divRow" style="height: 80px">
 			<!-- Name input -->
 			<div id="divName" class="divNameC">
 				<input id="inpName" class="inpNameC" type="text">
 			</div>
 	
 			<!-- Settings button -->
-			<Button id="btnSettings" class="btnSettingsC"></Button>
+			<Button id="btnSettings" class="btnSettingsC bordered"></Button>
 	
 			<!-- Check input -->
-			<div id="divCheckbox" class="divCheckboxC">
-				<input id="chkCheckbox" class="chkCheckboxC" type="checkbox">
+			<div id="divCheckbox" class="centeredContent" style="width: 13.3%; height: 100%;">
+				<input id="chkCheckbox" type="checkbox" style="width: 15px; height: 15px;">
 			</div>
 		</div>
 
 		<!-- Bottom bar -->
-		<div id="divBottomBar" class="divBottomBarC">
+		<div id="divBottomBar" class="divRow" style="height: 75%">
 			
 			<!-- Weapons scrollbox -->
 			<div id="scrWeapons" class="scrWeaponsC">
@@ -26,7 +26,7 @@
 			</div>
 
 			<!-- Info container -->
-			<div id="divInfoContainer" class="divInfoContainerC" style="border-radius: 0px 0px 10px 0px">
+			<div id="divInfoContainer" class="bordered" style="border-radius: 0px 0px 10px 0px; width: 26.7%; height: 100%;">
 				<div id="divICRow1" class="rowC"><label class="rowLabelC rowItemSize">HP</label><input class="rowInputC rowItemSize" type="text"></div>
 				<div id="divICRow2" class="rowC"><input class="rowInputC rowItemSize" type="text"><label class="rowLabelC rowItemSize">AC</label></div>
 				<div id="divICRow2" class="rowC"><label class="rowLabelC rowItemSize">INT</label><input class="rowInputC rowItemSize" type="text" style="border-radius: 0px 0px 15px 0px"></div>
@@ -46,9 +46,12 @@ export default {
 </script>
 
 <style>
+	.bordered {
+		border: 1px solid black;
+	}
+
 	.btnSettingsC {
 		background-color: white;
-		border: 1px solid black;
 		border-radius: 100%;	
 		margin-left: 12.5px;
 		margin-top: 12.5px;
@@ -56,30 +59,10 @@ export default {
 		height: 75%;
 	}
 
-	.chkCheckboxC {
-		width: 15px;
-		height: 15px;
-	}
-
-	.divBottomBarC {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		height: 75%;
-	}
-
-	.divCheckboxC {
+	.centeredContent {
 		align-items: center;
 		display: flex;
 		justify-content: center;
-		width: 13.3%;
-		height: 100%;
-	}
-
-	.divInfoContainerC {
-		border: 1px solid black;
-		width: 26.7%;
-		height: 100%;
 	}
 
 	.divNameC {
@@ -90,11 +73,10 @@ export default {
 		height: 100%;
 	}
 
-	.divTopBar {
+	.divRow {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
-		height: 80px;
 	}
 
 	.inpNameC {
@@ -121,7 +103,6 @@ export default {
 	}
 
 	.rowC {
-		/*border: 1px solid red;*/
 		display: flex;
 		flex-direction: row;
 		width: 100%;
