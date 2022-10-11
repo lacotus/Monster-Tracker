@@ -18,27 +18,25 @@
 		</div>
 
 		<!-- Bottom bar -->
-		<div id="divBottomBar" class="divRow" style="height: 75%">
-			
-			<!-- Weapons scrollbox -->
-			<div id="scrWeapons" class="scrWeaponsC">
-				
-			</div>
-
-			<!-- Info container -->
-			<div id="divInfoContainer" class="bordered" style="border-radius: 0px 0px 10px 0px; width: 26.7%; height: 100%;">
-				<div id="divICRow1" class="rowC"><label class="rowLabelC rowItemSize">HP</label><input class="rowInputC rowItemSize" type="text"></div>
-				<div id="divICRow2" class="rowC"><input class="rowInputC rowItemSize" type="text"><label class="rowLabelC rowItemSize">AC</label></div>
-				<div id="divICRow2" class="rowC"><label class="rowLabelC rowItemSize">INT</label><input class="rowInputC rowItemSize" type="text" style="border-radius: 0px 0px 15px 0px"></div>
-			</div>
-		</div>
+		<component v-bind:is="component"></component>
 	</div>
 </template>
 
 <script>
+import Page1 from './MonsterInstanceComponents/Page1.vue'
+import Page2 from './MonsterInstanceComponents/Page2.vue'
 
 export default {
 	name: 'MonsterInstance',
+	components: {
+		'page-one': Page1,
+		'page-two': Page2
+	},
+	data() {
+		return {
+			component: 'page-one'
+		}
+	},
 	methods: {},
 	mounted: function() {}
 }
