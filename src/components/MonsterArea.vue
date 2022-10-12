@@ -1,6 +1,6 @@
 <template>
 
-	<div id="monsterAreaContainer" class="container">
+	<div id="monsterAreaContainer" class="container" ref="container">
 		<div id="flexBox" class="flexBox">
 			<component :is="component"></component>
 			<Button class="tempButton">Temp button</Button>
@@ -10,13 +10,13 @@
 </template>
 
 <script>
+import MonsterInstance from './MonsterInstance.vue'
+import Vue from 'vue'
 
 export default {	
 	name: 'MonsterArea',
-	computed: {
-		component: function() {
-			return 'monsterInstance';
-		}
+	components: {
+		'monster-instance': MonsterInstance
 	},
 	created: function() {
 		window.addEventListener("resize", this.calcHeight);
@@ -33,7 +33,12 @@ export default {
 		},
 
 		addMonster() {
-			
+			var ComponentClass = Vue.extend(MonsterInstance)
+			var instance = new ComponentClass({
+				propsData: { title: this.count }
+			})
+			instance.$mount() // pass nothing. Why? I don't know, lol
+			this.$refs.container.appendChild(instance.$el)
 		}
 	},
 	mounted: function()  {

@@ -19,6 +19,7 @@
 
 		<!-- Bottom bar -->
 		<component v-bind:is="component"></component>
+
 	</div>
 </template>
 
@@ -38,7 +39,10 @@ export default {
 		}
 	},
 	methods: {},
-	mounted: function() {}
+	mounted: function() {},
+	props: {
+		title: String
+	}
 }
 
 </script>
