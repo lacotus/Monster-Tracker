@@ -2,13 +2,34 @@
 == TODO ==
 ==========
 
-5. Add top row in Monster object
+6.  Add weapons scrollbar to MonsterInstance (formally called Monster object)
+
+8.  Add cog logo to MonsterInstance settings button
+
+9.  Condense CSS classes
+		- divBottomBarC and divTopBar can be combined into one class, divRow. Heights will need to be kept
+		  separate, 75% and 80px respectively - done
+		- divCheckboxC can be broken down into a class called centerContent, width (13.3%) and height (100%)
+		  will be put in in-line style tag - done
+		- Replace .divInfoContainer with new class, bordered (as with others, width (26.7%) and height (100%)
+		  will need to be put in in-line style tag - done
+		- Add new bordered class to btnSettings, remove from btnSettingsC - done
+
+10. Create MonsterInstance page 1 component
+
+11. Create MonsterInstance page 2 component
+
+12. Create MonsterInstnace title component? 
 
 ===============
 == Completed ==
 ===============
-1. Setup top bar (MainHeader.vue) - done
-4. Set Monster object width / height - done
-3. Start work on Monster object - done
-2. Research FlexBox - done
+1.  Setup top bar (MainHeader.vue) - done
+4.  Set Monster object width / height - done
+3.  Start work on Monster object - done
+2.  Research FlexBox - done
+7.  Add general information section - done
+5.  Add top row in Monster object
+13. Research libraray for sibling communication (likely landing on Pinia) - done
+14. Install / setup pinia - done
 

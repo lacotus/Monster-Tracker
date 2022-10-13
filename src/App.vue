@@ -1,20 +1,20 @@
 <template>
 	<MainHeader />
-	<!--<MonsterArea />-->
-	<MonsterInstance />
+	<MonsterArea />
+	<!--<MonsterInstance />-->
 </template>
 
 <script>
 import MainHeader from './components/MainHeader.vue'
-// import MonsterArea from './components/MonsterArea.vue' - uncomment when ready to go back to proper way
-import MonsterInstance from './components/MonsterInstance.vue'
+import MonsterArea from './components/MonsterArea.vue'
+//import MonsterInstance from './components/MonsterInstance.vue'
 
 export default {
 	name: 'App',
 	components: {
 		MainHeader,
-		//MonsterArea
-		MonsterInstance
+		MonsterArea
+		//MonsterInstance
 	}
 }
 </script>

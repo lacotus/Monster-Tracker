@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
-import MonsterInstance from './components/MonsterInstance.vue'
 
-const myApp = createApp(App)
+const pinia = createPinia()
+const app = createApp(App)
 
-myApp.component('monsterInstance', MonsterInstance)
-
-myApp.mount('#app')
+app.use(pinia)
+app.mount('#app')
 
