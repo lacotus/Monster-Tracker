@@ -1,10 +1,10 @@
 <template>
 
-	<div id="divTopBar" class="claRow" style="height: 80px">
+	<div id="divTopBar" class="claRow" style="height: 25%">
 	
 		<!-- Name input -->
 		<div id="claRow" class="centeredContent claName">
-			<input id="inpName" class="claInput" type="text">
+			<input id="inpName" class="claInput" placeholder="Name..." type="text">
 		</div>
      
 		<!-- Settings button -->
@@ -34,15 +34,14 @@ export default {
 	}
 
    .claInput {
-        border-color: black;
+        border-color: green;
         border-style: solid;
-        border-width: 0px 0px 2px 0px;
+        border-width: 0px 2px 2px 0px;
         font-family: "Cutive";
         font-size: 30px;
         outline: none;
         padding-left: 20px;
         width: 95%;
-        height: 60%;
 	}
 
 
@@ -71,6 +70,11 @@ export default {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
+	}
+
+	::placeholder {
+		color: gray;
+		opacity: 1;
 	}
 
 </style>

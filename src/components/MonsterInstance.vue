@@ -2,8 +2,8 @@
 	<div id="MonsterContainer" class="MonsterContainer">
 
 		<!-- Top bar -->
-		<TitleBar />
-		
+		<title-bar />
+
 		<!-- Bottom bar -->
 		<component v-bind:is="component"></component>
 

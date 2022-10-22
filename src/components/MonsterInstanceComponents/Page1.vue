@@ -1,18 +1,27 @@
 <template>
 
-	<div id="pg1Container" class="claRow" style="height: 100%">
+	<div id="pg1Container" class="claRow" style="width: 100%; height: 75%;">
 
 		<!-- Attacks Scrollbar -->
-		<div id="divAttacks" class="claAttacks" style="width: 66.6%; height: 100%;">
-			
+		<div id="divAttacks" class="claAttacks" style="width: 66.6%; height: 100%; border: 2px solid black;">
+
+			<div id="attacksTopBar" class="claRow" style="padding-top: 5px;">
+				<div style="width: 30%; height: 10%;"><label class="claAttacksLabel">Name</label></div>
+				<div style="width: 20%; height: 10%;"><label class="claAttacksLabel">Bonus</label></div>
+				<div style="width: 30%; height: 10%;"><label class="claAttacksLabel">Damage</label></div>
+				<div style="width: 20%; height: 10%;"><button class="claAttacksButton bordered">+</button></div>
+			</div>
+
+			<div id="attacksScroller"></div>			
+
 		</div>
 
 		<!-- Info Container -->
 		<div id="divInfoContainer" class="bordered" style="border-radius: 0px 0px 10px 0px; width: 26.7%; width: 33.3%; height: 100%;">
 
-			<div class="claRow" style="height: 33.3%"><label class="centered claLabel rowItemSize fonts">HP</label><input class="claInput rowItemSize fonts" type="text"></div>			
-			<div class="claRow" style="height: 33.3%"><input class="claInput rowItemSize fonts" type="text"><label class="centered claLabel rowItemSize fonts">AC</label></div>
-			<div class="claRow" style="height: 33.3%"><label class="centered claLabel rowItemSize fonts">INT</label><input class="claInput rowItemSize fonts" type="text"></div>			
+			<div class="claRow" style="width: 100%; height: 33.3%;"><label class="centered claInfoContainerLabel rowItemSize fonts">HP</label><input class="claInput rowItemSize fonts" type="text"></div>			
+			<div class="claRow" style="width: 100%; height: 33.3%;"><input class="claInput rowItemSize fonts" type="text"><label class="centered claInfoContainerLabel rowItemSize fonts">AC</label></div>
+			<div class="claRow" style="width: 100%; height: 33.3%;"><label class="centered claInfoContainerLabel rowItemSize fonts">INT</label><input class="claInput rowItemSize fonts" type="text"></div>			
 
 		</div>
 		
@@ -46,6 +55,16 @@ export default {
 		height: 100%;
 	}
 
+	.claAttacksButton {
+		background-color: white;
+		border-radius: 15px;
+		font-size: 30px;
+		padding: 0px 0px 0px 0px;
+		text-align: center;
+		width: 30px;
+		height: 30px;
+	}
+
 	.claInput {
 		border: 0px;
 		outline: none;
@@ -53,7 +72,7 @@ export default {
 		text-align: center;
 	}
 
-	.claLabel {
+	.claInfoContainerLabel {
 		background-color: black;
 		color: white;
 	}
@@ -61,7 +80,11 @@ export default {
 	.claRow {
 		display: flex;
 		flex-direction: row;
-		width: 100%;
+	}
+
+	.claAttacksLabel {
+		color: black;
+		text-decoration: underline;
 	}
 
 	.fonts {
