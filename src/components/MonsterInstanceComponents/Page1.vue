@@ -3,14 +3,16 @@
 	<div id="pg1Container" class="claRow" style="height: 100%">
 
 		<!-- Attacks Scrollbar -->
-		<div id="divAttacks" class="claAttacks">
+		<div id="divAttacks" class="claAttacks" style="width: 66.6%; height: 100%;">
 			
 		</div>
 
 		<!-- Info Container -->
-		<div id="divInfoContainer" class="bordered" style="border-radius: 0px 0px 10px 0px; width: 26.7%; height: 100%;">
+		<div id="divInfoContainer" class="bordered" style="border-radius: 0px 0px 10px 0px; width: 26.7%; width: 33.3%; height: 100%;">
 
-			<div class="claRow" style="height: 33.3%"><label class="centered claLabel rowItemSize fonts">HP</label><input class="claInput rowItemSize fonts" type="text"></div>
+			<div class="claRow" style="height: 33.3%"><label class="centered claLabel rowItemSize fonts">HP</label><input class="claInput rowItemSize fonts" type="text"></div>			
+			<div class="claRow" style="height: 33.3%"><input class="claInput rowItemSize fonts" type="text"><label class="centered claLabel rowItemSize fonts">AC</label></div>
+			<div class="claRow" style="height: 33.3%"><label class="centered claLabel rowItemSize fonts">INT</label><input class="claInput rowItemSize fonts" type="text"></div>			
 
 		</div>
 		
