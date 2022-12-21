@@ -1,20 +1,26 @@
 <template>
 	<MainHeader />
-	<MonsterArea />
-	<!--<MonsterInstance />-->
+	<!--<TitleBar />-->
+	<!--<Page1 />-->
+	<!--<MonsterArea />-->
+	<MonsterInstance />
 </template>
 
 <script>
 import MainHeader from './components/MainHeader.vue'
-import MonsterArea from './components/MonsterArea.vue'
-//import MonsterInstance from './components/MonsterInstance.vue'
+//import MonsterArea from './components/MonsterArea.vue'
+import MonsterInstance from './components/MonsterInstance.vue'
+//import Page1 from './components/MonsterInstanceComponents/Page1.vue'
+//import TitleBar from './components/MonsterInstanceComponents/TitleBar.vue'
 
 export default {
 	name: 'App',
 	components: {
 		MainHeader,
-		MonsterArea
-		//MonsterInstance
+		//MonsterArea,
+		MonsterInstance
+		//Page1,
+		//TitleBar
 	}
 }
 </script>
