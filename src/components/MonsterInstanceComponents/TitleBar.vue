@@ -1,6 +1,6 @@
 <template>
 
-	<div id="divTopBar" class="claRow" style="height: 25%">
+	<div id="divTopBar" class="claRow" ref="divTopBar" style="height: 25%">
 	
 		<!-- Name input -->
 		<div id="claRow" class="centeredContent claName">
@@ -8,8 +8,10 @@
 		</div>
      
 		<!-- Settings button -->
-		<input type="submit" id="btnSettings" class="claBtnSettings" />
-		<img src="@/assets/cog.png" />
+		<a ref="cogContainer" @click="testMethod" class="centeredContent" >
+			<img src="@/assets/cog.png" ref="cogImg" />
+		</a>
+
 		<!-- Check input -->
 		<div id="divCheckbox" class="centeredContent" style="width: 13.3%; height: 100%;">
 			<input id="chkCheckbox" type="checkbox" style="width: 15px; height: 15px;">
@@ -22,7 +24,27 @@
 <script>
 
 export default {
-	name: 'title-bar'
+	name: 'title-bar',
+	methods: {
+		testMethod: function() {
+			console.log('testMethod was a success');
+		}
+	},
+	mounted: function () {
+		let height = this.$refs.divTopBar.clientHeight - 20;
+	
+		this.$refs.cogContainer.width = height;
+		this.$refs.cogContainer.height = height;	
+		this.$refs.cogImg.width = height;
+		this.$refs.cogImg.height = height;
+
+		console.log({ height });
+	},
+	data() {
+		return {
+			total_height: 0
+		}
+	}
 }
 
 </script>
@@ -76,10 +98,21 @@ export default {
 		width: 100%;
 	}
 
+	.cogImg {
+		background-image: url('@/assets/cog.png');
+	}
+	
 	::placeholder {
 		color: gray;
 		opacity: 1;
 	}
-
+	.testBackground {
+		background-color: yellow;
+	}
+	
+	.testBackground2 {
+		background-color: green;
+	}
+	
 </style>
 

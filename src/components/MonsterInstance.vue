@@ -28,9 +28,12 @@ export default {
 		}
 	},
 	methods: {},
-	mounted: function() {},
+	mounted: function () {
+		this.currentComponent = this.component
+	},
 	props: {
-		title: String
+		title: String,
+		currentComponent: String
 	}
 }
 

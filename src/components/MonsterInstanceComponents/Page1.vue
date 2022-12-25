@@ -21,7 +21,7 @@
 
 			<div class="claRow" style="width: 100%; height: 33.3%;"><label class="centered claInfoContainerLabel rowItemSize fonts">HP</label><input class="claInput rowItemSize fonts" type="text"></div>			
 			<div class="claRow" style="width: 100%; height: 33.3%;"><input class="claInput rowItemSize fonts" type="text"><label class="centered claInfoContainerLabel rowItemSize fonts">AC</label></div>
-			<div class="claRow" style="width: 100%; height: 33.3%;"><label class="centered claInfoContainerLabel rowItemSize fonts">INT</label><input class="claInput rowItemSize fonts" type="text"></div>			
+			<div class="claRow" style="width: 100%; height: 33.3%;"><label class="centered claInfoContainerLabel rowItemSize fonts">INT</label><input class="claInput rowItemSize fonts" style="z-index: -1;" type="text"></div>			
 
 		</div>
 		
