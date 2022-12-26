@@ -6,7 +6,11 @@
 
 15. Create plus button for weapon scrollbar
 
-19. Add functionality to switch between pages in MonsterInstance - done
+20. Fix Page1.vue CSS
+
+21. Clean up Page1.vue HTML
+
+22. Fix intInput border issue
 
 ===============
 == Completed ==
@@ -28,4 +32,5 @@
 16. Move html from TitleBar.vue to MonsterInstance.vue - done
 17. Adjust MonsterInstance JS - done
 18. Adjust MonsterInstance CSS - done
+19. Add functionality to switch between pages in MonsterInstance - done
 
