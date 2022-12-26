@@ -23,4 +23,8 @@
 11. Create MonsterInstance page 2 component - done
 12. Change INT TextBox to behind the border of MonsterInstance - done
 8.  Add cog logo to MonsterInstance settings button - done
+16. Move html from TitleBar.vue to MonsterInstance.vue - done
+17. Adjust MonsterInstance JS - done
+18. Adjust MonsterInstance CSS - done
+19. Add functionality to switch between pages in MonsterInstance - done
 

@@ -4,7 +4,9 @@
 
 6.  Add weapons scrollbar to MonsterInstance (formally called Monster object)
 
-8.  Add cog logo to MonsterInstance settings button
+15. Create plus button for weapon scrollbar
+
+19. Add functionality to switch between pages in MonsterInstance - done
 
 ===============
 == Completed ==
@@ -21,4 +23,9 @@
 9.  Condense CSS classes - done
 10. Create MonsterInstance page 1 component - done
 11. Create MonsterInstance page 2 component - done
+12. Change INT TextBox to behind the border of MonsterInstance - done
+8.  Add cog logo to MonsterInstance settings button - done
+16. Move html from TitleBar.vue to MonsterInstance.vue - done
+17. Adjust MonsterInstance JS - done
+18. Adjust MonsterInstance CSS - done
 

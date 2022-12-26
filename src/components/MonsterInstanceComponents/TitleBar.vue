@@ -28,7 +28,10 @@ export default {
 	methods: {
 		testMethod: function() {
 			console.log('testMethod was a success');
-		}
+		},
+		displayCurrentComponent: function() {
+			console.log(this.currentComponent);
+		},
 	},
 	mounted: function () {
 		let height = this.$refs.divTopBar.clientHeight - 20;
@@ -40,6 +43,7 @@ export default {
 
 		console.log({ height });
 	},
+	props: ['currentComponent'],
 	data() {
 		return {
 			total_height: 0

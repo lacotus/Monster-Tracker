@@ -47,7 +47,7 @@ export default {
 			console.log(this.component);
 		},
 		changePages: function() {
-			if (this.component == 'page-one') {
+			if (this.component = 'page-one') {
 				this.component = 'page-two';
 			} else {
 				this.component = 'page-one';
