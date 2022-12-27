@@ -8,10 +8,18 @@
 				<div style="width: 30%; height: 10%;"><label class="attacksLabel">Name</label></div>
 				<div style="width: 20%; height: 10%;"><label class="attacksLabel">Bonus</label></div>
 				<div style="width: 30%; height: 10%;"><label class="attacksLabel">Damage</label></div>
-				<div style="width: 20%; height: 10%;"><button class="attacksButton bordered">+</button></div>
+			
+				<a ref="plusContainer" @click="addWeapon()" class="plusSize alignRight">
+					<img src="@/assets/plus.png" ref="plusImg" class="plusSize" />
+				</a>
+
 			</div>
 
-			<div id="attacksScroller"></div>			
+			<div id="attacksScroller">
+				<li v-for="component in componentsList" :key="component.id" >
+					<component :is="weapon-component" />
+				</li>
+			</div>
 
 		</div>
 
@@ -33,7 +41,7 @@
 			<!-- INT -->
 			<div class="row" style="width: 100%; height: 33.3%;">
 				<label class="centered infoContainerLabel rowItemSize fonts">INT</label>
-				<input ref="intInput" class="input rowItemSize fonts" type="text">
+				<input ref="intInput" class="input rowItemSize fonts" type="text" style="border-radius: 10px 10px 10px 10px;">
 			</div>			
 
 		</div>
@@ -42,14 +50,36 @@
 </template>
 
 <script>
+import WeaponComponent from './Weapon.vue'
 
 export default {
-	name: 'page-one'
+	name: 'page-one',
+	data() {
+		return {
+			componentsList: ['weapon-component']
+		}
+	},
+	components: {
+		'weapon-component': WeaponComponent
+	},
+	methods: {
+		addWeapon: function() {
+			this.componentsList.push('weapon-component');
+
+			console.log("addWeapon was ran!");
+			console.log(this.componentsList);
+		}
+	}
 }
 
 </script>
 
 <style>
+
+	.alignRight {
+		margin-left: auto;
+		margin-right: 15px;
+	}
 
 	.attacks {
 		overflow-y: scroll;
@@ -69,6 +99,8 @@ export default {
 
 	.attacksLabel {
 		color: black;
+		font-family: "Cutive";
+		font-size: 20px;
 		text-decoration: underline;
 	}
 
@@ -103,6 +135,11 @@ export default {
 		color: white;
 	}
 
+	.plusSize {
+		width: 30px;
+		height: 30px;
+	}
+
 	.row {
 		display: flex;
 		flex-direction: row;
@@ -111,6 +148,14 @@ export default {
 	.rowItemSize {
 		width: 50%;
 		height: 100%;
+	}
+
+	.testBackground {
+		background-color: yellow;
+	}
+
+	.testBackground2 {
+		background-color: green;
 	}
 
 	.textBorder {

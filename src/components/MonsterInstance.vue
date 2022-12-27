@@ -105,6 +105,7 @@ export default {
 		flex-direction: column;
 		width: 600px;
 		height: 320px;
+		z-index: 1;
 	}
 
 	.name {

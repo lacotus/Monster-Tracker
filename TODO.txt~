@@ -4,13 +4,13 @@
 
 6.  Add weapons scrollbar to MonsterInstance (formally called Monster object)
 
-15. Create plus button for weapon scrollbar
+26. Add functionality to add weapon into page1
 
-20. Fix Page1.vue CSS
+27. Add TitleBar into page 2
 
-21. Clean up Page1.vue HTML
+28. Add Ability Scores to page 2
 
-22. Fix intInput border issue
+29. Add Special Abilities to page 2
 
 ===============
 == Completed ==
@@ -33,4 +33,12 @@
 17. Adjust MonsterInstance JS - done
 18. Adjust MonsterInstance CSS - done
 19. Add functionality to switch between pages in MonsterInstance - done
+21. Clean up Page1.vue HTML - done
+20. Fix Page1.vue CSS - done
+22. Fix intInput border issue - done
+23. Adjust CSS for labels in weapons section of page1 - done
+15. Create plus button for weapon scrollbar - done
+24. Bug: intInput background glitch - resolved: moved z-index modifaction out
+of intInput, put a style tag in to adjust border radius
+25. Create weapon component - done
 

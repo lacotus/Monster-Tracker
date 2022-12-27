@@ -1,0 +1,46 @@
+<template>
+
+	<div ref="inputRow" id="inputRow" class="row" >
+		<input class="" style="width: 45%; height: 20px;" > <!-- inpName -->
+		<input class="" style="width: 15%; height: 20px;" > <!-- inpAttackBonus -->
+		<input class="" style="width: 30%; height: 20px;" > <!-- inpDamage -->
+		<input type="CheckBox" > <!-- inpCheckbox -->
+	</div>
+
+</template>
+
+<script>
+
+export default {
+	name: 'WeaponComponent'
+}
+
+</script>
+
+<style>
+
+	/* Classes */
+	.row {
+		display: flex;
+		flex-direction: row;
+		width: 100%
+	}
+
+	.testBackground {
+		background-color: yellow;
+	}
+
+	/* ID grabbers */
+	#inputRow > * {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	/* Element selectors */
+	input {
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+
+</style>
+
