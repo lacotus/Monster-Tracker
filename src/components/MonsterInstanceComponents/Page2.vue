@@ -9,36 +9,54 @@
 
 		</div>
 
-		<div id="asContainer" class="" style="border-radius: 0px 0px 10px 0px" >
-			<div id="rowStr" class="row" style="width: 100%; height: 12.5%;" >
-				<div class="asItemSize asLabelContainer"><label class="asLabel centerContent" style="width: 50%;" >STR</label></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
+		<div id="asContainer" class="row" style="border-radius: 0px 0px 10px 0px" >
+			
+			<!-- Column 1, for labels -->
+			<div id="col1" ref="col1" class="column testBackground" style="width: 50%;">
+				
+				<!-- STR -->
+				<div ref="lblStr" class="asLabelContainer centerContent">
+					<label class="asLabel">STR</label>
+				</div>
+
+				<!-- DEX -->
+				<div ref="lblDex" class="asLabelContainer centerContent">
+					<label class="asLabel" style="width: 50%;" >DEX</label>
+				</div>
+
+				<!-- CON -->
+				<div ref="lblCon" class="asLabelContainer centerContent">
+					<label class="asLabel" style="width: 50%;" >CON</label>
+				</div>
+
+				<!-- INT -->
+				<div ref="lblInt" class="asLabelContainer centerContent">
+					<label class="asLabel" style="width: 50%;" >INT</label>
+				</div>
+
+				<!-- WIS -->
+				<div ref="lblWis" class="asLabelContainer centerContent">
+					<label class="asLabel" style="width: 50%;" >WIS</label>
+				</div>
+
+				<!-- CHA -->
+				<div ref="lblCha" class="asLabelContainer centerContent">
+					<label class="asLabel" style="width: 50%;" >CHA</label>
+				</div>
+			
 			</div>
 			
-			<div id="rowDex" class="row" style="width: 100%; height: 12.5%;" >
-				<div class="asItemSize asLabelContainer"><label class="asLabel" style="width: 50%;" >DEX</label></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>	
-			</div>
-			
-			<div id="rowCon" class="row" style="width: 100%; height: 12.5%;" >
-				<div class="asItemSize asLabelContainer"><label class="asLabel" style="width: 50%;" >CON</label></div>
+			<!-- Column 2, for inputs -->
+			<div id="col2" class="column" style="width: 50%;">
 				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-			</div>
-			
-			<div id="rowInt" class="row" style="width: 100%; height: 12.5%;" >
-				<div class="asItemSize asLabelContainer"><label class="asLabel" style="width: 50%;" >INT</label></div>
 				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-			</div>
-			
-			<div id="rowWis" class="row" style="width: 100%; height: 12.5%;" >
-				<div class="asItemSize asLabelContainer"><label class="asLabel" style="width: 50%;" >WIS</label></div>
 				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-			</div>
-			
-			<div id="rowCha" class="row" style="width: 100%; height: 12.5%;" >
-				<div class="asItemSize asLabelContainer"><label class="asLabel" style="width: 50%;" >CHA</label></div>
 				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
+
 			</div>
+					
 		</div>
 
 	</div>
@@ -50,7 +68,15 @@ export default {
 	name: 'page-two',
 	mounted: function() {
 		
-		// Calculate 
+		// Calculate asItem height
+		let totalHeight = this.$refs.col1.clientHeight;
+		let itemHeight = (totalHeight / 6) - 10;
+
+		// Set asItem height
+		this.$refs.lblStr.height = itemHeight; 
+		this.$refs.lblDex.height = itemHeight;
+	
+		console.log(totalHeight, itemHeight);
 	}
 }
 
@@ -76,6 +102,12 @@ export default {
 		align-items: center;
 		display: flex;
 		justify-content: center;
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 
 	.row {
