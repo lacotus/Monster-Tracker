@@ -15,7 +15,7 @@
 			<div id="col1" ref="col1" class="column testBackground" style="width: 50%;">
 				
 				<!-- STR -->
-				<div ref="lblStr" class="asLabelContainer centerContent">
+				<div ref="lblStr" class="asLabelContainer centerContent testBackground2">
 					<label class="asLabel">STR</label>
 				</div>
 
@@ -48,12 +48,12 @@
 			
 			<!-- Column 2, for inputs -->
 			<div id="col2" class="column" style="width: 50%;">
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div>
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- STR -->
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- DEX -->
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- CON -->
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- INT -->
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- WIS -->
+				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- CHA -->
 
 			</div>
 					
@@ -73,9 +73,10 @@ export default {
 		let itemHeight = (totalHeight / 6) - 10;
 
 		// Set asItem height
+		this.$refs.lblStr.width = itemHeight;
 		this.$refs.lblStr.height = itemHeight; 
 		this.$refs.lblDex.height = itemHeight;
-	
+
 		console.log(totalHeight, itemHeight);
 	}
 }
