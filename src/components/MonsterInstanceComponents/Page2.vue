@@ -6,42 +6,45 @@
 		-->
 
 		<!-- Special ablilities -->
-		<div id="saContainer" >
-
+		<div id="saContainer" class="centerContent column">
+			<label class="saLabel">Special Abilities</label>
+			<div id="saInputContainer" style="width: 95%; height: 85%;">
+				<textarea class="saTextarea"></textarea>
+			</div>
 		</div>
 
 		<div id="asContainer" class="row" style="border-radius: 0px 0px 10px 0px" >
 			
 			<!-- Column 1, for labels -->
-			<div id="col1" ref="col1" class="column testBackground" style="width: 50%;">
+			<div id="col1" ref="col1" class="column" style="width: 50%;">
 				
 				<!-- STR -->
-				<div ref="lblStr" class="asLabelContainer centerContent testBackground2">
+				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel">STR</label>
 				</div>
 
 				<!-- DEX -->
-				<div ref="lblDex" class="asLabelContainer centerContent">
-					<label class="asLabel" style="width: 50%;" >DEX</label>
+				<div class="asItemSize asLabelContainer centerContent">
+					<label ref="lblDex" class="asLabel" style="width: 50%;" >DEX</label>
 				</div>
 
 				<!-- CON -->
-				<div ref="lblCon" class="asLabelContainer centerContent">
+				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel" style="width: 50%;" >CON</label>
 				</div>
 
 				<!-- INT -->
-				<div ref="lblInt" class="asLabelContainer centerContent">
+				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel" style="width: 50%;" >INT</label>
 				</div>
 
 				<!-- WIS -->
-				<div ref="lblWis" class="asLabelContainer centerContent">
+				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel" style="width: 50%;" >WIS</label>
 				</div>
 
 				<!-- CHA -->
-				<div ref="lblCha" class="asLabelContainer centerContent">
+				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel" style="width: 50%;" >CHA</label>
 				</div>
 			
@@ -50,12 +53,12 @@
 			<!-- Column 2, for inputs -->
 			<div id="col2" class="column" style="width: 50%;">
 
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- STR -->
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- DEX -->
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- CON -->
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- INT -->
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- WIS -->
-				<div class="asItemSize"><input style="width: 90%; height: 100%;" ></div> <!-- CHA -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- STR -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- DEX -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- CON -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- INT -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- WIS -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- CHA -->
 
 			</div>
 					
@@ -68,16 +71,16 @@
 
 export default {
 	name: 'page-two',
-	mounted: function() {
+	mounted: function () {
 		
 		// Calculate asItem height
 		let totalHeight = this.$refs.col1.clientHeight;
 		let itemHeight = (totalHeight / 6) - 10;
 
 		// Set asItem height
-		this.$refs.lblStr.width = itemHeight;
-		this.$refs.lblStr.height = itemHeight; 
+		this.$refs.lblStr.maxHeight = itemHeight;
 		this.$refs.lblDex.height = itemHeight;
+		this.$refs.inpStr.height = itemHeight;
 
 		console.log(totalHeight, itemHeight);
 	}
@@ -90,6 +93,13 @@ export default {
 	/* Classes */
 	.asItemSize {
 		width: 50%;
+	}
+
+	.asItemSize {
+		margin-top: 2.5%;
+		margin-bottom: 2.5%;
+		width: 100%;
+		height: 14%;
 	}
 
 	.asLabelContainer {
@@ -113,10 +123,32 @@ export default {
 		height: 100%;
 	}
 
+	.column.around {
+		justify-content: space-around;
+	}
+
+	.column.between {
+		justify-content: space-between;
+	}
+
 	.row {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
+	}
+
+	.saLabel {
+		color: black;
+		font-family: "Cutive";
+		width: 100%; 
+		height: 10%;
+	}
+
+	.saTextarea {
+		border: 1px solid black;
+		border-radius: 5px;
+		width: 100%;
+		height: 95%;
 	}
 
 	.testBackground {

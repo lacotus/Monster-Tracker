@@ -5,8 +5,8 @@
 		<div id="divAttacks" class="attacks" style="width: 66.6%; height: 100%; border-top: 2px solid black; overflow: hidden;">
 
 			<div id="attacksTopBar" class="row" style="padding-top: 5px;">
-				<div style="width: 30%; height: 10%;"><label class="attacksLabel">Name</label></div>
-				<div style="width: 20%; height: 10%;"><label class="attacksLabel">Bonus</label></div>
+				<div style="width: 50%; height: 10%;"><label class="attacksLabel">Name</label></div>
+				<div style="width: 20%; height: 10%;"><label class="attacksLabel">AB</label></div>
 				<div style="width: 30%; height: 10%;"><label class="attacksLabel">Damage</label></div>
 			
 				<a ref="plusContainer" @click="addWeapon()" class="plusSize alignRight">
@@ -15,9 +15,9 @@
 
 			</div>
 
-			<div id="attacksScroller">
-				<div v-for="component in componentsList" :key="component.id" >
-					<component :is="weapon-component" />
+			<div id="attacksScroller" class="attacksScoller">
+				<div v-for="(child, index) in componentsList" :key="index" >
+					<component :is="child" class="attackScroller"/>
 				</div>
 			</div>
 
@@ -51,6 +51,7 @@
 
 <script>
 import WeaponComponent from './Weapon.vue'
+import Vue from 'vue'
 
 export default {
 	name: 'page-one',
@@ -68,6 +69,14 @@ export default {
 
 			console.log("addWeapon was ran!");
 			console.log(this.componentsList);
+		},
+		children() {
+			let ComponentClass = Vue.extend('weapon-component');
+			let instance = new ComponentClass({});
+
+			return [
+				instance
+			];
 		}
 	}
 }
@@ -76,9 +85,12 @@ export default {
 
 <style>
 
+
+	/* Classes */
+
 	.alignRight {
 		margin-left: auto;
-		margin-right: 15px;
+		margin-right: 5px;
 	}
 
 	.attacks {
@@ -150,7 +162,7 @@ export default {
 		height: 100%;
 	}
 
-	.testBackground {
+	.testBackground1 {
 		background-color: yellow;
 	}
 
@@ -158,8 +170,18 @@ export default {
 		background-color: green;
 	}
 
+	.testBackground3 {
+		background-color: pink;
+	}
+
 	.textBorder {
 		border: 2px solid red;
+	}
+
+	/* ID Grabbers */
+	.attackScroller {
+		margin-top: 5px;
+		margin-bottom: 5px;
 	}
 
 </style>
