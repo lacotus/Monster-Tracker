@@ -25,27 +25,27 @@
 
 				<!-- DEX -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label class="asLabel" style="width: 50%;" >DEX</label>
+					<label class="asLabel" @click="saveData()">DEX</label>
 				</div>
 
 				<!-- CON -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label class="asLabel" style="width: 50%;" >CON</label>
+					<label class="asLabel">CON</label>
 				</div>
 
 				<!-- INT -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label class="asLabel" style="width: 50%;" >INT</label>
+					<label class="asLabel">INT</label>
 				</div>
 
 				<!-- WIS -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label class="asLabel" style="width: 50%;" >WIS</label>
+					<label class="asLabel">WIS</label>
 				</div>
 
 				<!-- CHA -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label class="asLabel" style="width: 50%;" >CHA</label>
+					<label class="asLabel">CHA</label>
 				</div>
 			
 			</div>
@@ -53,12 +53,12 @@
 			<!-- Column 2, for inputs -->
 			<div id="col2" class="column" style="width: 50%;">
 
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.str"></div> <!-- STR -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.dex"></div> <!-- DEX -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.con"></div> <!-- CON -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.inn"></div> <!-- INT -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.wis"></div> <!-- WIS -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.cha"></div> <!-- CHA -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.str"></div> <!-- STR -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.dex"></div> <!-- DEX -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.con"></div> <!-- CON -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.inn"></div> <!-- INT -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.wis"></div> <!-- WIS -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.cha"></div> <!-- CHA -->
 
 			</div>
 					
@@ -75,18 +75,22 @@ export default {
 		return {
 			arrAllData: [{
 				txtSpecialAbilities: '',
-				arrAbilityScores: [{
-					str: '',
-					dex: '',
-					con: '',
-					inn: '',
-					wis: '',
-					cha: ''
-				}]
+				str: '',
+				dex: '',
+				con: '',
+				inn: '',
+				wis: '',
+				cha: ''
 			}]
 		};
 	},
-	methods: {},
+	methods: {
+		saveData: function () {
+			const data = JSON.stringify(this.arrAllData);
+			window.localStorage.setItem('arrAllData', data);
+			console.log(JSON.parse(window.localStorage.getItem('arrAllData')));
+		}
+	},
 	mounted: function () {}
 }
 
