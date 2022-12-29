@@ -9,7 +9,7 @@
 		<div id="saContainer" class="centerContent column">
 			<label class="saLabel">Special Abilities</label>
 			<div id="saInputContainer" style="width: 95%; height: 85%;">
-				<textarea class="saTextarea"></textarea>
+				<textarea class="saTextarea" v-model="arrAllData.txtSpecialAbilities"></textarea>
 			</div>
 		</div>
 
@@ -20,12 +20,12 @@
 				
 				<!-- STR -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label class="asLabel">STR</label>
+					<label class="asLabel" @click="displaySA()">STR</label>
 				</div>
 
 				<!-- DEX -->
 				<div class="asItemSize asLabelContainer centerContent">
-					<label ref="lblDex" class="asLabel" style="width: 50%;" >DEX</label>
+					<label class="asLabel" style="width: 50%;" >DEX</label>
 				</div>
 
 				<!-- CON -->
@@ -53,12 +53,12 @@
 			<!-- Column 2, for inputs -->
 			<div id="col2" class="column" style="width: 50%;">
 
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- STR -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- DEX -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- CON -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- INT -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- WIS -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" ></div> <!-- CHA -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.str"></div> <!-- STR -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.dex"></div> <!-- DEX -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.con"></div> <!-- CON -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.inn"></div> <!-- INT -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.wis"></div> <!-- WIS -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.arrAbilityScores.cha"></div> <!-- CHA -->
 
 			</div>
 					
@@ -71,19 +71,23 @@
 
 export default {
 	name: 'page-two',
-	mounted: function () {
-		
-		// Calculate asItem height
-		let totalHeight = this.$refs.col1.clientHeight;
-		let itemHeight = (totalHeight / 6) - 10;
-
-		// Set asItem height
-		this.$refs.lblStr.maxHeight = itemHeight;
-		this.$refs.lblDex.height = itemHeight;
-		this.$refs.inpStr.height = itemHeight;
-
-		console.log(totalHeight, itemHeight);
-	}
+	data() {
+		return {
+			arrAllData: [{
+				txtSpecialAbilities: '',
+				arrAbilityScores: [{
+					str: '',
+					dex: '',
+					con: '',
+					inn: '',
+					wis: '',
+					cha: ''
+				}]
+			}]
+		};
+	},
+	methods: {},
+	mounted: function () {}
 }
 
 </script>

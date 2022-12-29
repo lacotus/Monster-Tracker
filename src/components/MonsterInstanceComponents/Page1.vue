@@ -9,7 +9,7 @@
 				<div style="width: 20%; height: 10%;"><label class="attacksLabel">AB</label></div>
 				<div style="width: 30%; height: 10%;"><label class="attacksLabel">Damage</label></div>
 			
-				<a ref="plusContainer" @click="addWeapon()" class="plusSize alignRight">
+				<a ref="plusContainer" @click="displayData()" class="plusSize alignRight">
 					<img src="@/assets/plus.png" ref="plusImg" class="plusSize" />
 				</a>
 
@@ -29,19 +29,19 @@
 			<!-- HP -->
 			<div class="row" style="width: 100%; height: 33.3%;">
 				<label class="centered infoContainerLabel rowItemSize fonts">HP</label>
-				<input ref="hpInput" class="input rowItemSize fonts" type="text">
+				<input ref="hpInput" class="input rowItemSize fonts" type="text" v-model="hp">
 			</div>
 
 			<!-- AC -->
 			<div class="row" style="width: 100%; height: 33.3%;">
-				<input ref="acInput" class="input rowItemSize fonts" type="text">
+				<input ref="acInput" class="input rowItemSize fonts" type="text" v-model="ac">
 				<label class="centered infoContainerLabel rowItemSize fonts">AC</label>
 			</div>
 
 			<!-- INT -->
 			<div class="row" style="width: 100%; height: 33.3%;">
 				<label class="centered infoContainerLabel rowItemSize fonts">INT</label>
-				<input ref="intInput" class="input rowItemSize fonts" type="text" style="border-radius: 10px 10px 10px 10px;">
+				<input ref="intInput" class="input rowItemSize fonts" type="text" style="border-radius: 10px 10px 10px 10px;" v-model="initiative">
 			</div>			
 
 		</div>
@@ -51,13 +51,15 @@
 
 <script>
 import WeaponComponent from './Weapon.vue'
-import Vue from 'vue'
 
 export default {
 	name: 'page-one',
 	data() {
 		return {
-			componentsList: ['weapon-component']
+			componentsList: ['weapon-component'],
+			hp: '',
+			ac: '',
+			initiative: ''
 		}
 	},
 	components: {
@@ -70,13 +72,8 @@ export default {
 			console.log("addWeapon was ran!");
 			console.log(this.componentsList);
 		},
-		children() {
-			let ComponentClass = Vue.extend('weapon-component');
-			let instance = new ComponentClass({});
-
-			return [
-				instance
-			];
+		displayData: function() {
+			console.log(this.hp, this.ac, this.initiative);
 		}
 	}
 }

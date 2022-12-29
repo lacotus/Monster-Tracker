@@ -4,13 +4,14 @@
 
 6.  Add weapons scrollbar to MonsterInstance (formally called Monster object)
 
-26. Add functionality to add weapon into page1
+31. Solve glitch where weapons array does not save when switching back from page 1
 
-27. Add TitleBar into page 2
+35. Page1 data binding - working, need to figure out how weapon arrays will be
+handled
 
-28. Add Ability Scores to page 2
+36. Page1 JSON
 
-29. Add Special Abilities to page 2
+37. Page2 JSON
 
 ===============
 == Completed ==
@@ -41,4 +42,19 @@
 24. Bug: intInput background glitch - resolved: moved z-index modifaction out
 of intInput, put a style tag in to adjust border radius
 25. Create weapon component - done
+27. Add TitleBar into page 2 - done
+26. Add functionality to add weapon into page1 - done
+30. Correct spacing of weapon components - done
+29. Add Special Abilities to page 2 - done
+29. Add Special Abilities to page 2 - done
+32. Fix spacing of labels in col1 in page2 - done
+33. Fix spacing of input in col2 in page2 - done
+28. Add Ability Scores to page 2 - done
+36. Page2 data biding - done
+34. Bug: Not switching back to page1 from page2 - resolved by removing code in
+mounted() part of page2
+
+===========
+== Notes ==
+===========
 
