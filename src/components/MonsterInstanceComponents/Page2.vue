@@ -86,6 +86,8 @@ export default {
 	},
 	methods: {
 		saveData: function () {
+			console.log(this.arrAllData.str);
+
 			const data = JSON.stringify(this.arrAllData);
 			window.localStorage.setItem('arrAllData', data);
 			console.log(JSON.parse(window.localStorage.getItem('arrAllData')));

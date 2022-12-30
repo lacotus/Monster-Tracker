@@ -9,9 +9,9 @@
 35. Page1 data binding - working, need to figure out how weapon arrays will be
 handled
 
-36. Page1 JSON
+36. Page1 save data
 
-37. Page2 JSON
+37. Page2 save data
 
 ===============
 == Completed ==
@@ -57,4 +57,8 @@ mounted() part of page2
 ===========
 == Notes ==
 ===========
-
+Save states: Looking into something called Simple State Management with
+Reactivity API. Looks like it's a public API in the vue suite, which can
+export JS objects to be shared between instances. Need to look more into it,
+reading this atm: https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api
+ 
