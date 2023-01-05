@@ -1,0 +1,67 @@
+==========
+== TODO ==
+==========
+
+6.  Add weapons scrollbar to MonsterInstance (formally called Monster object)
+
+31. Solve glitch where weapons array does not save when switching back from page 1
+
+35. Page1 data binding - working, need to figure out how weapon arrays will be
+handled
+
+36. Page1 save data
+
+37. Page2 save data
+
+===============
+== Completed ==
+===============
+1.  Setup top bar (MainHeader.vue) - done
+4.  Set Monster object width / height - done
+3.  Start work on Monster object - done
+2.  Research FlexBox - done
+7.  Add general information section - done
+5.  Add top row in Monster object
+13. Research libraray for sibling communication (likely landing on Pinia) - done
+14. Install / setup pinia - done
+12. Create MonsterInstnace title component - done 
+9.  Condense CSS classes - done
+10. Create MonsterInstance page 1 component - done
+11. Create MonsterInstance page 2 component - done
+12. Change INT TextBox to behind the border of MonsterInstance - done
+8.  Add cog logo to MonsterInstance settings button - done
+16. Move html from TitleBar.vue to MonsterInstance.vue - done
+17. Adjust MonsterInstance JS - done
+18. Adjust MonsterInstance CSS - done
+19. Add functionality to switch between pages in MonsterInstance - done
+21. Clean up Page1.vue HTML - done
+20. Fix Page1.vue CSS - done
+22. Fix intInput border issue - done
+23. Adjust CSS for labels in weapons section of page1 - done
+15. Create plus button for weapon scrollbar - done
+24. Bug: intInput background glitch - resolved: moved z-index modifaction out
+of intInput, put a style tag in to adjust border radius
+25. Create weapon component - done
+27. Add TitleBar into page 2 - done
+26. Add functionality to add weapon into page1 - done
+30. Correct spacing of weapon components - done
+29. Add Special Abilities to page 2 - done
+29. Add Special Abilities to page 2 - done
+32. Fix spacing of labels in col1 in page2 - done
+33. Fix spacing of input in col2 in page2 - done
+28. Add Ability Scores to page 2 - done
+36. Page2 data biding - done
+34. Bug: Not switching back to page1 from page2 - resolved by removing code in
+mounted() part of page2
+
+===========
+== Notes ==
+===========
+Save states: Looking into something called Simple State Management with
+Reactivity API. Looks like it's a public API in the vue suite, which can
+export JS objects to be shared between instances. Need to look more into it,
+reading this atm: https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api
+
+I am pretty sure we're save to ignore the above comment for now. I am looking
+into adding a backend to the project, following this article: https://mfikri.com/en/blog/nodejs-express-mysql-vue 
+ 
