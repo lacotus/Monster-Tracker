@@ -7,7 +7,8 @@ const showMonsters = (req, res) => {
         if (err){
             res.send(err);
         }else{
-            res.json(results);
+            console.log('made it here');
+			res.json(results);
         }
     });
 }

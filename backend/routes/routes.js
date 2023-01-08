@@ -8,6 +8,9 @@ const data = require('../controllers/monster.js')
 const router = express.Router();
 
 // Home directory TODO
+router.get('/', (req, res) => {
+	res.send('hi')
+});
 
 // Get All Monster
 router.get('/monsters', data.showMonsters);

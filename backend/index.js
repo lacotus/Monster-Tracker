@@ -15,7 +15,7 @@ app.use(cors());
 // use router
 app.use(routes.router);
 
-app.listen(3306, function () { console.log('Server running at http://localhost:5000') });
+app.listen(3306, function () { console.log('Server running at http://localhost:3306') });
 
 process.on('uncaughtException', function (err) {
 	console.log(err);

@@ -4,7 +4,7 @@ const connection = config.connection;
  
 // Get All Monsters
 const getMonsters = (result) => {
-    db.query("SELECT * FROM TMonsters", (err, results) => {             
+    connection.query("SELECT * FROM TMonsters", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -16,7 +16,7 @@ const getMonsters = (result) => {
  
 // Get Single Monster
 const getMonsterById = (id, result) => {
-    db.query("SELECT * FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {             
+    connection.query("SELECT * FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -28,7 +28,7 @@ const getMonsterById = (id, result) => {
  
 // Insert Monster to Database
 const insertMonster = (data, result) => {
-    db.query("INSERT INTO TMonsters SET ?", [data], (err, results) => {             
+    connection.query("INSERT INTO TMonsters SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -40,7 +40,7 @@ const insertMonster = (data, result) => {
  
 // Update Monster to Database
 const updateMonsterById = (data, id, result) => {
-    db.query("UPDATE TMonsters SET strName, intHealthPoints, intArmorClass, intInitiative, strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha WHERE intMonsterID = ?", [data.strName, data.intHealthPoints, data.intArmorClass, data.intInitiative, data.strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha, id], (err, results) => {             
+    connection.query("UPDATE TMonsters SET strName, intHealthPoints, intArmorClass, intInitiative, strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha WHERE intMonsterID = ?", [data.strName, data.intHealthPoints, data.intArmorClass, data.intInitiative, data.strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -52,7 +52,7 @@ const updateMonsterById = (data, id, result) => {
  
 // Delete Monster to Database
 const deleteMonsterById = (id, result) => {
-    db.query("DELETE FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {
+    connection.query("DELETE FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {
         if(err) {
             console.log(err);
             result(err, null);
