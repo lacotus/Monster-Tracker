@@ -1,26 +1,29 @@
 // import express
-import express from "express";
- 
+const express = require('express')
+
 // import function from controller
-import { showMonsters, showMonsterById, createMonster, updateMonster, deleteMonster } from "../controllers/monster.js";
+const data = require('../controllers/monster.js')
  
 // init express router
 const router = express.Router();
- 
+
+// Home directory TODO
+
 // Get All Monster
-router.get('/monsters', showMonsters);
+router.get('/monsters', data.showMonsters);
  
 // Get Single Monster
-router.get('/monsters/:id', showMonsterById);
+router.get('/monsters/:id', data.showMonsterById);
  
 // Create New Monster
-router.post('/monsters', createMonster);
+router.post('/monsters', data.createMonster);
  
 // Update Monster
-router.put('/monsters/:id', updateMonster);
+router.put('/monsters/:id', data.updateMonster);
  
 // Delete Monster
-router.delete('/monsters/:id', deleteMonster);
+router.delete('/monsters/:id', data.deleteMonster);
  
 // export default router
-export default router;
+exports.router = router;
+

@@ -1,26 +1,27 @@
 // import express
-import express from "express";
- 
+const express = require('express')
+
 // import function from controller
-import { showProducts, showProductById, createProduct, updateProduct, deleteProduct } from "../controllers/product.js";
+const data = require('../controllers/monster.js')
  
 // init express router
 const router = express.Router();
  
-// Get All Product
-router.get('/products', showProducts);
+// Get All Monster
+router.get('/monsters', data.showMonsters);
  
-// Get Single Product
-router.get('/products/:id', showProductById);
+// Get Single Monster
+router.get('/monsters/:id', data.showMonsterById);
  
-// Create New Product
-router.post('/products', createProduct);
+// Create New Monster
+router.post('/monsters', data.createMonster);
  
-// Update Product
-router.put('/products/:id', updateProduct);
+// Update Monster
+router.put('/monsters/:id', data.updateMonster);
  
-// Delete Product
-router.delete('/products/:id', deleteProduct);
+// Delete Monster
+router.delete('/monsters/:id', data.deleteMonster);
  
 // export default router
-export default router;
+exports.router = router;
+

@@ -1,7 +1,7 @@
 // imports, express cors and router
-import express from "express";
-import cors from "cors";
-import Router from "./routes/routes.js";
+const express = require('express')
+const cors = require('cors')
+const routes = require('./routes/routes.js')
 
 // init express
 const app = express();
@@ -13,7 +13,11 @@ app.use(express.json());
 app.use(cors());
 
 // use router
-app.use(Router);
+app.use(routes.router);
 
-app.listen(5000, () => { console.log('Server running at http://localhost:5000') });
+app.listen(3306, function () { console.log('Server running at http://localhost:5000') });
+
+process.on('uncaughtException', function (err) {
+	console.log(err);
+});
 

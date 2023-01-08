@@ -1,9 +1,10 @@
 // import connection
-import db from "../config/database.js";
+const config = require('../config/database.js');
+const connection = config.connection;
  
 // Get All Monsters
-export const getMonsters = (result) => {
-    db.query("SELECT * FROM TMonsters", (err, results) => {             
+const getMonsters = (result) => {
+    connection.query("SELECT * FROM TMonsters", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -14,8 +15,8 @@ export const getMonsters = (result) => {
 }
  
 // Get Single Monster
-export const getMonsterById = (id, result) => {
-    db.query("SELECT * FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {             
+const getMonsterById = (id, result) => {
+    connection.query("SELECT * FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -26,8 +27,8 @@ export const getMonsterById = (id, result) => {
 }
  
 // Insert Monster to Database
-export const insertMonster = (data, result) => {
-    db.query("INSERT INTO TMonsters SET ?", [data], (err, results) => {             
+const insertMonster = (data, result) => {
+    connection.query("INSERT INTO TMonsters SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -38,8 +39,8 @@ export const insertMonster = (data, result) => {
 }
  
 // Update Monster to Database
-export const updateMonsterById = (data, id, result) => {
-    db.query("UPDATE TMonsters SET strName, intHealthPoints, intArmorClass, intInitiative, strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha WHERE intMonsterID = ?", [data.strName, data.intHealthPoints, data.intArmorClass, data.intInitiative, data.strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha, id], (err, results) => {             
+const updateMonsterById = (data, id, result) => {
+    connection.query("UPDATE TMonsters SET strName, intHealthPoints, intArmorClass, intInitiative, strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha WHERE intMonsterID = ?", [data.strName, data.intHealthPoints, data.intArmorClass, data.intInitiative, data.strSpecialAbilities, intStr, intDex, intCon, intInt, intWis, intCha, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -50,8 +51,8 @@ export const updateMonsterById = (data, id, result) => {
 }
  
 // Delete Monster to Database
-export const deleteMonsterById = (id, result) => {
-    db.query("DELETE FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {
+const deleteMonsterById = (id, result) => {
+    connection.query("DELETE FROM TMonsters WHERE intMonsterID = ?", [id], (err, results) => {
         if(err) {
             console.log(err);
             result(err, null);
@@ -60,4 +61,11 @@ export const deleteMonsterById = (id, result) => {
         }
     });   
 }
+
+// Export code
+exports.getMonsters = getMonsters;
+exports.getMonsterById = getMonsterById;
+exports.insertMonster = insertMonster;
+exports.updateMonsterById = updateMonsterById;
+exports.deleteMonsterById = deleteMonsterById;
 

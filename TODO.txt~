@@ -61,4 +61,7 @@ Save states: Looking into something called Simple State Management with
 Reactivity API. Looks like it's a public API in the vue suite, which can
 export JS objects to be shared between instances. Need to look more into it,
 reading this atm: https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api
+
+I am pretty sure we're save to ignore the above comment for now. I am looking
+into adding a backend to the project, following this article: https://mfikri.com/en/blog/nodejs-express-mysql-vue 
  
