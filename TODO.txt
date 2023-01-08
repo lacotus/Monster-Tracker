@@ -64,4 +64,5 @@ reading this atm: https://vuejs.org/guide/scaling-up/state-management.html#simpl
 
 I am pretty sure we're save to ignore the above comment for now. I am looking
 into adding a backend to the project, following this article: https://mfikri.com/en/blog/nodejs-express-mysql-vue 
- 
+
+Ignore both of those previous comments, this video tutorial is the SHIT: https://www.youtube.com/watch?v=Fa4cRMaTDUI&list=RDCMUC8butISFwT-Wl7EV0hUK0BQ&start_radio=1&ab_channel=freeCodeCamp.org  
