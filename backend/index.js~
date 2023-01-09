@@ -14,9 +14,9 @@ app.use(bodyParser.json()); // body-parser, used for reading json data
 app.use(cors()); // cors, allows client access
 app.use(routes.router); // This is my own custom router
 
-app.get('/status', (req, res) => {
+app.post('/register', (req, res) => {
 	res.send({
-		message: 'hello world!'
+		message: `Hello ${req.body.email}! Your user was registered! Have fun!`
 	})
 });
 
