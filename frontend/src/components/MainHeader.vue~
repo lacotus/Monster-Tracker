@@ -39,9 +39,6 @@ export default {
 			console.log("MainHeader width: " + document.getElementById("container").offsetWidth);
 			console.log("MainHeader height: " + document.getElementById("container").offsetHeight);
 		}
-	},
-	mounted () {
-		this.getAllUsers();
 	}
 }
 </script>

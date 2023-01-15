@@ -1,5 +1,5 @@
 <template>
-	<router-vue></router-vue>
+	<router-view></router-view>
 	<MainHeader />
 	<!--<TitleBar />-->
 	<!--<Page1 />-->

@@ -26,7 +26,11 @@ router.put('/monsters/:id', data.updateMonster);
  
 // Delete Monster
 router.delete('/monsters/:id', data.deleteMonster);
- 
+
+router.get('/register', (req, res) => {
+	res.send('register')
+})
+
 // export default router
 exports.router = router;
 
