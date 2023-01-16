@@ -13,6 +13,12 @@ handled
 
 37. Page2 save data
 
+38. Create sign in page component
+
+39. Code frontend of sign in page component
+
+40. Query for existing users
+
 ===============
 == Completed ==
 ===============

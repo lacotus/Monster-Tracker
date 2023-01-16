@@ -2,7 +2,7 @@
 	
 	<div id="container" class="MainStyle" ref="headerContainer">
 		<div id="title" class="TitleStyle">Monster Tracker</div>
-		<div id="closeButton"><button class="ButtonStyle" v-on:click="writeWindowWidth()">close</button></div>
+		<div id="closeButton"><button class="ButtonStyle" v-on:click="getAllUsers()">close</button></div>
 		<div id="addButton"><button class="ButtonStyle">add</button></div>
 	</div>
 
@@ -30,6 +30,8 @@ export default {
 				console.log(response)
 				this.users = response
 				this.numberOfUsers = this.users.length
+				console.log('Users: ', this.users)
+				console.log('Number of users: ', this.numberOfUsers)
 			})
 		},
 		writeWindowWidth(){
