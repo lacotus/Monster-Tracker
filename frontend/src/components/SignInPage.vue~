@@ -1,14 +1,20 @@
 <template>
+	
+	<!-- Two container divs. First is window width, second contains logic -->
 	<div class="main centered-content" style="overflow: hidden;">
 		<div class="container">
+			
+			<!-- Widgets that control logic -->
 			<label class="welcome-label">Welcome to Monster Tracker!</label>
-			<label style="text-align: left; font-size: 1vw; padding-left: 3vw;">Please sign in:</label>
-			<label>Username:</label>
+			<label style="text-align: left; font-size: 1vw; margin-left: 3vw; width: 90%;">Please sign in:</label>
+			<label style="margin-top: 3vh;">Username:</label>
 			<input>
-			<label>Password:</label>
-			<input>
+			<label style="margin-top: 3vh;">Password:</label>
+			<input type="password">
+			<a href="https://www.google.com" style="margin-top: 10px;">Create account</a>
 		</div>
 	</div>
+
 </template>
 
 <script>
@@ -30,6 +36,19 @@ export default {
 
 <style>
 
+	/* Element specific CSS */
+	a:before {
+		color: black;
+	}
+
+	a:active {
+		color: blue;
+	}
+
+	a:visited {
+		color: blue;
+	}
+
 	html, body {
 		overflow: hidden;
 	}
@@ -40,9 +59,12 @@ export default {
 	}
 
 	input {
+		border: 2px solid black;
+		border-radius: 5px;
 		width: 80%;
 	}
 
+	/* Classes */
 	.centered-content {
 		align-items: center;
 		display: flex;
@@ -50,17 +72,14 @@ export default {
 	}
 
 	.container {
+		align-items: center;
 		border: 3px solid black;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 		width: 40%;
 		height: 90%;
-	}
-
-	.container > input {
-		align-items: center;
-		justify-content: center;
 	}
 
 	.main {

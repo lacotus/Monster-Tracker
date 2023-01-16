@@ -8,7 +8,23 @@ const morgan = require('morgan')
 // init express
 const app = express();
 
-users = ['Tim', 'Terry', 'Tom']
+users = [
+	{
+		"name": "Tom",
+		"username": "tommy",
+		"password": "tommy"
+	},
+	{
+		"name": "Jack",
+		"username": "jass",
+		"password": "jass"
+	},
+	{
+		"name": "Michael",
+		"username": "mikey",
+		"password": "mikey"
+	}
+]
 
 // Setup app to use certain modules
 app.use(morgan('combined')); // Morgan, used for logging

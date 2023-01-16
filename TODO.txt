@@ -19,6 +19,8 @@ handled
 
 40. Query for existing users
 
+41. Fix link css in Sign in page component
+
 ===============
 == Completed ==
 ===============

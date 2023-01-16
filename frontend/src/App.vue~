@@ -1,6 +1,6 @@
 <template>
-	<SignInPage />
-	<!--<MainHeader />-->
+	<!--<SignInPage />-->
+	<MainHeader />
 	<!--<TitleBar />-->
 	<!--<Page1 />-->
 	<!--<MonsterArea />-->
@@ -8,22 +8,22 @@
 </template>
 
 <script>
-//import MainHeader from './components/MainHeader.vue'
+import MainHeader from './components/MainHeader.vue'
 //import MonsterArea from './components/MonsterArea.vue'
 //import MonsterInstance from './components/MonsterInstance.vue'
 //import Page1 from './components/MonsterInstanceComponents/Page1.vue'
 //import TitleBar from './components/MonsterInstanceComponents/TitleBar.vue'
-import SignInPage from './components/SignInPage.vue'
+//import SignInPage from './components/SignInPage.vue'
 
 export default {
 	name: 'App',
 	components: {
-		//MainHeader,
+		MainHeader,
 		//MonsterArea,
 		//MonsterInstance
 		//Page1,
 		//TitleBar
-		SignInPage
+		//SignInPage
 	}
 }
 </script>
