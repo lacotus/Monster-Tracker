@@ -31,6 +31,7 @@ export default {
 				this.users = response
 				this.numberOfUsers = this.users.length
 				console.log('Users: ', this.users)
+				console.log('Number of users: ', this.numberOfUsers)
 			})
 		},
 		writeWindowWidth(){
