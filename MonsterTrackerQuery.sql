@@ -11,6 +11,7 @@ IF OBJECT_ID ('TMonsterWeapons')	IS NOT NULL DROP TABLE TMonsterWeapons
 IF OBJECT_ID ('TMonsters')			IS NOT NULL DROP TABLE TMonsters
 IF OBJECT_ID ('TWeapons')			IS NOT NULL DROP TABLE TWeapons
 IF OBJECT_ID ('TWeaponTypes')		IS NOT NULL DROP TABLE TWeaponTypes
+IF OBJECT_ID ('TUsers')				IS NOT NULL DROP TABLE TUsers	
 
 -- =============
 -- == Creates ==
@@ -53,6 +54,12 @@ CREATE TABLE TWeaponTypes (
 	,CONSTRAINT TWeaponTypes_PK PRIMARY KEY ( intWeaponTypeID )
 )
 
+CREATE TABLE TUsers (
+	 intUserID				INTEGER			NOT NULL
+	,strUsername			VARCHAR(255)	NOT NULL
+	,strPassword			VARCHAR(255)	NOT NULL
+)
+
 -- =====================================
 -- == Establish Referential Integrity ==
 -- =====================================
@@ -78,6 +85,11 @@ FOREIGN KEY ( intWeaponTypeID ) REFERENCES TWeaponTypes ( intWeaponTypeID )
 -- ===================
 -- == Add Test Data ==
 -- ===================
+INSERT INTO TUsers			 ( intUserID, strUsername, strPassword )
+VALUES						 ( 1, 'tommy', 'tommy' )
+							,( 2, 'paul', 'paul' )
+							,( 3, 'tim', 'tim' )
+
 INSERT INTO TWeaponTypes	 ( intWeaponTypeID, strWeaponType )
 VALUES						 ( 1, 'Simple Melee' )
 							,( 2, 'Simple Ranged' )

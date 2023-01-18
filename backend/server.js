@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const routes = require('./routes/routes.js')
 const morgan = require('morgan')
+const mysql = require('mysql')
+const connection = require('./config/database.js')
 
 // init express
 const app = express();
@@ -39,6 +41,14 @@ app.get('/', (req, res) => {
 app.get('/api/users', (req, res) => {
 	console.log('api/users called!')
 	res.json(users)
+
+	connection.query("SELECT * FROM TUsers", function (err, result, fields) {
+		if (err) throw err;
+
+		console.log("Queried results: ", result);
+	})
+
+	connection.end()
 });
 
 app.post('/api/user', (req, res) => {

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const routes = require('./routes/routes.js')
 const morgan = require('morgan')
+const connection = require('./config/database.js')
 
 // init express
 const app = express();
@@ -15,14 +16,14 @@ users = [
 		"password": "tommy"
 	},
 	{
-		"name": "Tom",
-		"username": "tommy",
-		"password": "tommy"
+		"name": "Jack",
+		"username": "jass",
+		"password": "jass"
 	},
 	{
-		"name": "Tom",
-		"username": "tommy",
-		"password": "tommy"
+		"name": "Michael",
+		"username": "mikey",
+		"password": "mikey"
 	}
 ]
 
@@ -39,6 +40,14 @@ app.get('/', (req, res) => {
 app.get('/api/users', (req, res) => {
 	console.log('api/users called!')
 	res.json(users)
+
+	connection.query("SELECT * FROM TUsers", function (err, result, fields) {
+		if (err) throw err;
+
+		console.log("Queried results: ", result);
+	})
+
+	connection.end()
 });
 
 app.post('/api/user', (req, res) => {

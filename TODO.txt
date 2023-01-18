@@ -15,8 +15,6 @@ handled
 
 38. Create sign in page component
 
-39. Code frontend of sign in page component
-
 40. Query for existing users
 
 41. Fix link css in Sign in page component
@@ -61,6 +59,7 @@ of intInput, put a style tag in to adjust border radius
 36. Page2 data biding - done
 34. Bug: Not switching back to page1 from page2 - resolved by removing code in
 mounted() part of page2
+39. Code frontend of sign in page component - done
 
 ===========
 == Notes ==
