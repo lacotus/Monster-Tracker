@@ -5,7 +5,7 @@ const cors = require('cors')
 const routes = require('./routes/routes.js')
 const morgan = require('morgan')
 const mysql = require('mysql')
-const connection = require('./config/database.js')
+const connection = require('./config/database')
 
 // init express
 const app = express();
@@ -36,6 +36,15 @@ app.use(routes.router); // This is my own custom router
 
 app.get('/', (req, res) => {
 	res.send('hi');
+})
+
+app.get('/getMySqlStatus', (req, res) => {
+	
+	connection.ping((err) => {
+		if (err) return res.status(500).send("MySQL server is down");
+
+		res.send('MySQL server is active');
+	})	
 })
 
 app.get('/api/users', (req, res) => {

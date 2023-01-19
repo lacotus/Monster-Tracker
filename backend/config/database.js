@@ -1,19 +1,19 @@
 const mysql = require('mysql')
 
-const connection = mysql.createConnection({
+console.log('--Pre connection creation--');
+
+var con = mysql.createConnection({
 	host: 'localhost',
 	user: 'cotus',
 	password: 'km051818',
 	database: 'MonsterTrackerDB'
 });
 
-connection.connect();
+console.log('--Post connection creation, pre connection--');
 
-connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) => {
+con.connect(function(err) {
+	console.log('--into the function--');
 	if (err) throw err;
-
-	console.log('The solution is: ', rows[0].solution);
+	console.log('Connected!');
 });
-
-exports.connection = connection;
 
