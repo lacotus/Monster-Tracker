@@ -1,6 +1,9 @@
+
+// 1-25-23: Service to handle reaching out to expressjs
+
 export async function getAllUsers() {
 
-	const response = await fetch('/api/users');
+	const response = await fetch('/users');
 	return await response.json();
 
 }

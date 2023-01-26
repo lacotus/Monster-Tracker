@@ -1,29 +1,33 @@
 <template>
-	<SignInPage />
-	<!--<MainHeader />-->
-	<!--<TitleBar />-->
-	<!--<Page1 />-->
-	<!--<MonsterArea />-->
-	<!--<MonsterInstance />-->
+	<div>
+
+		<component v-bind:is="component"></component>
+
+	</div>
 </template>
 
 <script>
-//import MainHeader from './components/MainHeader.vue'
-//import MonsterArea from './components/MonsterArea.vue'
-//import MonsterInstance from './components/MonsterInstance.vue'
-//import Page1 from './components/MonsterInstanceComponents/Page1.vue'
-//import TitleBar from './components/MonsterInstanceComponents/TitleBar.vue'
+import BattlePage from './components/BattlePage.vue'
 import SignInPage from './components/SignInPage.vue'
 
 export default {
 	name: 'App',
 	components: {
-		//MainHeader,
-		//MonsterArea,
-		//MonsterInstance
-		//Page1,
-		//TitleBar
+		BattlePage,
 		SignInPage
+	},
+	data() {
+		return {
+			component: 'SignInPage'
+		}
+	},
+	methods: {
+		setBattlePage() {
+			this.component = 'BattlePage'
+		},
+		setSignInPage() {
+			this.component = 'SignInPage'
+		}
 	}
 }
 </script>
