@@ -4,8 +4,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const routes = require('./routes/routes.js')
 const morgan = require('morgan')
-const mysql = require('mysql')
-const connection = require('./config/database.js')
+const mysql = require('mysql2')
+const db = require('./config/database')
 
 // init express
 const app = express();
@@ -64,7 +64,38 @@ app.post('/register', (req, res) => {
 	})
 });
 
-app.listen(3306, function () { console.log('Server running at http://localhost:3306') });
+app.listen(3000, function () { console.log('Server running at http://localhost:3000') });
+
+
+// new work space
+app.get('/users', async (req, res) => {
+
+  const results = await db.promise().query(`SELECT * FROM USERS`);
+  console.log(results[0]);
+  res.send(results[0]);
+
+});
+
+app.post('/users', (req, res) => {
+  const { username, password } = req.body;
+  if (username && password) {
+    try {
+      db.promise().query(`INSERT INTO USERS VALUES('${username}', '${password}')`);
+      res.status(201).send({ msg: 'Created User' });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
 
 process.on('uncaughtException', function (err) {
 	console.log(err);
