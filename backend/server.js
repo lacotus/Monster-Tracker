@@ -38,6 +38,15 @@ app.get('/', (req, res) => {
 	res.send('hi');
 })
 
+app.get('/getMySqlStatus', (req, res) => {
+	
+	connection.ping((err) => {
+		if (err) return res.status(500).send("MySQL server is down");
+
+		res.send('MySQL server is active');
+	})	
+})
+
 app.get('/api/users', (req, res) => {
 	console.log('api/users called!')
 	res.json(users)
