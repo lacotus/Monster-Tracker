@@ -1,6 +1,3 @@
-
-<!-- 1-25-23: Page we're trying to make a new expressjs call in -->
-
 <template>
 	
 	<!-- Two container divs. First is window width, second contains logic -->

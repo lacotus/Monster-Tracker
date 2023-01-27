@@ -22,6 +22,21 @@ export default {
 
 <style>
 
+	#title, #closeButton, #addButton {display: inline-block; *display: inline; vertical-align: top;}
+
+	#closeButton, #addButton {
+		float: right;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	
+	#title {
+		font-family: "Cutive";
+		font-size: 30px;
+		line-height: 50px;	
+	}
+
 	.ButtonStyle {
 		font-family: "Cutive";
 		width: 60px;

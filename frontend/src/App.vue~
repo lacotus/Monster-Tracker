@@ -9,16 +9,18 @@
 <script>
 import BattlePage from './components/BattlePage.vue'
 import SignInPage from './components/SignInPage.vue'
+import CreateUser from './components/CreateUser.vue'
 
 export default {
 	name: 'App',
 	components: {
 		BattlePage,
-		SignInPage
+		SignInPage,
+		CreateUser
 	},
 	data() {
 		return {
-			component: 'SignInPage'
+			component: 'CreateUser'
 		}
 	},
 	methods: {

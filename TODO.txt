@@ -23,11 +23,9 @@ handled
 
 43. Write login function bones
 
-44. Add dynamic component to App.vue
-
 46. Create CreateUser.vue component
 
-47. Combine MainHeader and MonsterArea into one component
+48. Update BattlePage CSS to be percentage based
 
 ===============
 == Completed ==
@@ -71,16 +69,10 @@ of intInput, put a style tag in to adjust border radius
 mounted() part of page2
 39. Code frontend of sign in page component - done
 45. Add switch to main content page when login function is ran - done
+47. Combine MainHeader and MonsterArea into one component - done
+44. Add dynamic component to App.vue - done
 
 ===========
 == Notes ==
 ===========
-Save states: Looking into something called Simple State Management with
-Reactivity API. Looks like it's a public API in the vue suite, which can
-export JS objects to be shared between instances. Need to look more into it,
-reading this atm: https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api
 
-I am pretty sure we're save to ignore the above comment for now. I am looking
-into adding a backend to the project, following this article: https://mfikri.com/en/blog/nodejs-express-mysql-vue 
-
-Ignore both of those previous comments, this video tutorial is the SHIT: https://www.youtube.com/watch?v=Fa4cRMaTDUI&list=RDCMUC8butISFwT-Wl7EV0hUK0BQ&start_radio=1&ab_channel=freeCodeCamp.org  
