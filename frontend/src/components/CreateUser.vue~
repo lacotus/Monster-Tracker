@@ -7,11 +7,16 @@
 			<!-- Widgets that control logic -->
 			<label class="main-label">Please provide the following information to create your account</label>
 			<label>Username</label>
-			<input ref="inpUsername" v-model="username">
+			<input 	v-bind:class="{'border-black': validUsername, 'border-red':!validUsername}" 
+					v-model="strUsername">
 			<label>Password</label>
-			<input ref="inpPasswordOriginal" v-model="strPasswordOriginal" type="password">
+			<input 	v-bind:class="{'border-black': validPasswordOriginal, 'border-red': !validPasswordOriginal}"
+					v-model="strPasswordOriginal" 
+					type="password">
 			<label>Confirm Password</label>
-			<input ref="inpPasswordConfirmation" v-model="strPasswordConfirmation" type="password">
+			<input 	v-bind:class="{'border-black': validPasswordConfirmation, 'border-red': !validPasswordConfirmation}"
+					v-model="strPasswordConfirmation" 
+					type="password">
 			<button v-on:click="createUser()">Create</button>
 			<button>Cancel</button>
 			
@@ -32,9 +37,13 @@ export default {
 			numberOfUsers: '',
 
 			// data for tracking new users
-			username: '',
+			strUsername: '',
 			strPasswordOriginal: '',
-			strPasswordConfirmation: ''
+			strPasswordConfirmation: '',
+		
+			validUsername: true,
+			validPasswordOriginal: true,
+			validPasswordConfirmation: true
 		}
 	},
 	methods: {
@@ -44,7 +53,6 @@ export default {
 			if (this.strPasswordOriginal == this.strPasswordConfirmation) {
 				return true
 			} else {
-				this.$refs.inpUsername.style.border = "2px solid red";
 				return false
 			}
 
@@ -54,18 +62,25 @@ export default {
 			// for loop checks each taken username against those which already exist in the database, 
 			// if none are found the loop ends and false is returned
 			for (let i = 0; i < this.numberOfUsers; i++) {
-				if (this.users[i].strUsername == this.username) {
+				if (this.users[i].strUsername == this.strUsername) {
 					return true
 				}
 			}
 			return false
 
 		},
+		checkUsernameValidity() {
+			if (validUsername) {
+				
+			} else {
+				
+			}
+		},
 		createUser() {
 
-			// 
+			// Check data integrity 
 			if (this.validation()) {
-				
+				console.log('createUser input validated')
 			}
 
 		},
@@ -105,20 +120,58 @@ export default {
 	
 		},
 		validateUsername() {
-			
-			// check username field for existing text
-			if (this.username != '') {
-				return true
+		
+			// first if: check username field for existing text, second if: check that username is not taken
+		
+			if (this.strUsername != '') {
+				if (this.checkTakenUsername() == false) {
+					this.validUsername = true
+					return true
+				
+				} else {
+					this.validUsername = false
+					alert('Username taken, please select a new one')
+					return false
+		
+				}
 			} else {
-				this.$refs.inpUsername.style.border = "2px solid red"
+				this.validUsername = false
+				alert('Please enter a new username')
 				return false
+		
 			}
 
 		},
 		validatePasswordOriginal() {
 
+			// check password original field for existing text
+
+			if (this.strPasswordOriginal != '') {
+				this.validPasswordOriginal = true
+				return true
+
+			} else {
+				this.validPasswordOriginal = false
+				alert('Please enter a password')
+				return false
+
+			}
+
 		},
 		validatePasswordConfirmation() {
+			
+			// check password original field for existing text
+
+			if (this.strPasswordConfirmation != '') {
+				this.validPasswordConfirmation = true
+				return true
+
+			} else {
+				this.validPasswordConfirmation = false
+				alert('Please enter a password')
+				return false
+
+			}
 
 		}
 	},
@@ -129,6 +182,30 @@ export default {
 </script>
 
 <style>
+
+	.border-black {	
+		border: 2px solid black; 
+		border-radius: 5px;
+	}
+	
+	.border-black:focus {	
+		border: 2px solid black;
+		border-radius: 5px;
+		box-shadow: none;
+		outline-style: none;
+	}
+	
+	.border-red {	
+		border: 2px solid red;
+		border-radius: 5px;
+	}
+	
+	.border-red:focus {	
+		border: 2px solid red;
+		border-radius: 5px;
+		box-shadow: none;
+		outline-style: none;
+	}
 	
 	button {
 		background: white;
@@ -155,10 +232,12 @@ export default {
 	}
 
 	input {
-		border: 2px solid black;
-		border-radius: 5px;
 		padding-left: 2vw;
 		width: 80%;
+	}
+
+	input:focus {
+		border-color: 2px solid blue;
 	}
 
 	.centered-content {
