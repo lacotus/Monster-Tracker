@@ -18,7 +18,7 @@
 					v-model="strPasswordConfirmation" 
 					type="password">
 			<button v-on:click="createUser()">Create</button>
-			<button>Cancel</button>
+			<button v-on:click="gotoSignInPage()">Cancel</button>
 			
 		</div>
 	</div>
@@ -47,16 +47,6 @@ export default {
 		}
 	},
 	methods: {
-		checkPasswordsMatch() {
-			
-			// if passwords match return true, else return false
-			if (this.strPasswordOriginal == this.strPasswordConfirmation) {
-				return true
-			} else {
-				return false
-			}
-
-		},
 		checkTakenUsername() {
 			
 			// for loop checks each taken username against those which already exist in the database, 
@@ -69,20 +59,22 @@ export default {
 			return false
 
 		},
-		checkUsernameValidity() {
-			if (validUsername) {
-				
-			} else {
-				
-			}
-		},
 		createUser() {
 
 			// Check data integrity 
 			if (this.validation()) {
 				console.log('createUser input validated')
+				const dataObject = { username: this.strUsername, password: this.strPasswordOriginal }
+				createUser(dataObject).then(res => {
+					console.log('res.msg: ', res.msg)
+					if (res.msg == 'Created User') {
+						alert("Created user")
+						this.$parent.setMainPage()
+					}})
+				.catch(err => {
+						console.error(err)
+				})
 			}
-
 		},
 		getAllUsers() {
 			getAllUsers().then(response => {
@@ -93,18 +85,29 @@ export default {
 				console.log('Number of users: ', this.numberOfUsers)
 			})
 		},
+		gotoSignInPage() {
+			this.$parent.setSignInPage()
+		},
 
 		// validation functions
 		validation() {
 			
-			console.log('validate ran')
+			// Reset validation
+			this.validUsername = true
+			this.validPasswordOriginal = true
+			this.validPasswordConfirmation = true
 
 			// Run all three validation functions
 			if (this.validateUsername()) {
 				if (this.validatePasswordOriginal()) {
 					if (this.validatePasswordConfirmation()) {
-						return true
+						if (this.validatePasswordsMatch()) {
+							return true
 
+						} else {
+							return false
+					
+						}
 					} else {
 						return false
 
@@ -169,6 +172,24 @@ export default {
 			} else {
 				this.validPasswordConfirmation = false
 				alert('Please enter a password')
+				return false
+
+			}
+
+		},
+		validatePasswordsMatch() {
+			
+			// check that this.strPasswordOriginal == this.strPasswordConfirmation
+			
+			if (this.strPasswordOriginal == this.strPasswordConfirmation) {
+				this.validPasswordOriginal == true
+				this.validPasswordConfirmation == true
+				return true
+
+			} else {	
+				this.validPasswordOriginal == false
+				this.validPasswordConfirmation == false
+				alert('Passwords must match')
 				return false
 
 			}

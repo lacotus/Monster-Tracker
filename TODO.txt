@@ -21,11 +21,11 @@ handled
 
 42. Fix json object returned in SignInPage, change strUsername to username
 
-43. Write login function bones
-
-46. Create CreateUser.vue component
-
 48. Update BattlePage CSS to be percentage based
+
+49. Fix password match css border issue
+
+50. Add input validation to SignInPage
 
 ===============
 == Completed ==
@@ -71,6 +71,8 @@ mounted() part of page2
 45. Add switch to main content page when login function is ran - done
 47. Combine MainHeader and MonsterArea into one component - done
 44. Add dynamic component to App.vue - done
+46. Create CreateUser.vue component - done
+43. Write login function bones - done
 
 ===========
 == Notes ==

@@ -12,7 +12,7 @@
 			<!--<label style="margin-top: 3vh;">Password:</label>-->
 			<input v-model="password" type="password" style="margin-top: 1vh;" placeholder="Password...">
 			<button v-on:click="loginFunction()">Login</button>
-			<a href="https://www.google.com" style="margin-top: 10px;">Create account</a>
+			<button v-on:click="gotoCreateAccount()">Create Account</button>
 		</div>
 	</div>
 
@@ -64,14 +64,17 @@ export default {
 		getInputValues() {
 			console.log(this.username, this.password)
 		},
+		gotoCreateAccount() {
+			this.$parent.setCreateAccount()
+		},
 		loginFunction() {
 			var usernameFound = false
 			for (let i = 0; i < this.numberOfUsers; i++) {
 				if (this.users[i].strUsername == this.username) {
-					if (this.users[i].password == this.password ) {
-						alert('Password correct')
-						this.$parent.setBattlePage()
+					if (this.users[i].strPassword == this.password ) {
+						this.$parent.setMainPage()
 					} else {
+						console.log('users[i]: ', this.users[i])
 						alert('Password incorrect')
 					}
 				}

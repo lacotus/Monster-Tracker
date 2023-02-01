@@ -88,12 +88,25 @@ app.get('/users', async (req, res) => {
 
 });
 
-app.post('/users', (req, res) => {
-  const { username, password } = req.body;
+app.post('/users', async (req, res) => {
+  // Get username / password from the body of the request, display to console
+  const username = req.body.username
+  const password = req.body.password
+  console.log('\n==================\nusername: ', username, '\npassword: ', password)
+
+  // Check for valid username / password, if valid continue
   if (username && password) {
     try {
-      db.promise().query(`INSERT INTO USERS VALUES('${username}', '${password}')`);
+
+      // Calculate next primary key based on user table in db
+      const nextPrimaryKeyObject = await db.promise().query(`SELECT MAX(intUserID) + 1 as data FROM users`)
+      const nextPrimaryKeyConstant = nextPrimaryKeyObject[0][0].data
+      console.log('nextPrimaryKeyConstant: ', nextPrimaryKeyConstant)
+
+      // Insert values into the db
+      db.promise().query(`INSERT INTO USERS VALUES('${nextPrimaryKeyConstant}', '${username}', '${password}')`);
       res.status(201).send({ msg: 'Created User' });
+
     } catch (err) {
       console.log(err);
     }

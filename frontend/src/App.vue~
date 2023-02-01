@@ -10,22 +10,30 @@
 import BattlePage from './components/BattlePage.vue'
 import SignInPage from './components/SignInPage.vue'
 import CreateUser from './components/CreateUser.vue'
+import MainPage from './components/MainPage.vue'
 
 export default {
 	name: 'App',
 	components: {
 		BattlePage,
 		SignInPage,
-		CreateUser
+		CreateUser,
+		MainPage
 	},
 	data() {
 		return {
-			component: 'CreateUser'
+			component: 'SignInPage'
 		}
 	},
 	methods: {
 		setBattlePage() {
 			this.component = 'BattlePage'
+		},
+		setCreateAccount() {
+			this.component = 'CreateUser'
+		},
+		setMainPage() {
+			this.component = 'MainPage'
 		},
 		setSignInPage() {
 			this.component = 'SignInPage'

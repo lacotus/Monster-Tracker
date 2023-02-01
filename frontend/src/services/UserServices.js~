@@ -9,12 +9,17 @@ export async function getAllUsers() {
 }
 
 export async function createUser(data) {
-	const response = await fetch(`/api/user/`, {
-		method: 'POST',
-		headers: {'ContentType': 'application/json'},
-		body: JSON.stringify({user: data})
-	})
 	
-	return await response.json();
+	console.log('createUser in UserServices was ran.')
+	console.log('data: ', data)
+	console.log('JSON.stringify: ', JSON.stringify(data))
+	
+	return fetch(`/users`, {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(data)
+	}).then(res => {
+		return res.json()
+	})
 }
 
