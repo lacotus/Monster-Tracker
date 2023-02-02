@@ -13,6 +13,7 @@ const db = require('./config/database')
 // init express
 const app = express();
 
+var userID = ''
 users = [
 	{
 		"name": "Tom",
@@ -87,6 +88,26 @@ app.get('/users', async (req, res) => {
   res.send(results[0]);
 
 });
+
+app.get('/userbattles', async (req, res) => {
+
+ const userID = req.body.userID
+ console.log('userID: ', userID)
+ const query = "SELECT FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + 4
+console.log(query)
+ const results = await db.promise().query()
+
+});
+
+app.post('/userbattles', async (req, res) => {
+  console.log('/userbattles req.body.userID: ', req.body.userID)
+  this.userID = req.body.userID 
+  if (this.userID != '') {
+    res.status(201).send({ msg: 'Updated userID' })
+  } else {
+    res.status(201).send({ msg: 'Failed to update userID' })
+  }
+})
 
 app.post('/users', async (req, res) => {
   // Get username / password from the body of the request, display to console

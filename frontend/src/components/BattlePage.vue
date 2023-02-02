@@ -7,8 +7,10 @@
 			<div id="addButton"><button class="ButtonStyle">add</button></div>
 		</div>	
 
-		<div>
-
+		<div class="bp-main-area">
+			<div v-for="count in counts">
+				<MonsterInstance />
+			</div>
 		</div>
 
 	</div>

@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<component v-bind:is="component"></component>
+		<component v-bind:is="component" v-model="userID" @update="setUserID"></component>
 
 	</div>
 </template>
@@ -11,6 +11,8 @@ import BattlePage from './components/BattlePage.vue'
 import SignInPage from './components/SignInPage.vue'
 import CreateUser from './components/CreateUser.vue'
 import MainPage from './components/MainPage.vue'
+import BattleLists from './components/BattleLists.vue'
+import CustomMonster from './components/CustomMonster'
 
 export default {
 	name: 'App',
@@ -18,25 +20,38 @@ export default {
 		BattlePage,
 		SignInPage,
 		CreateUser,
-		MainPage
+		MainPage,
+		BattleLists,
+		CustomMonster
 	},
 	data() {
 		return {
-			component: 'SignInPage'
+			component: 'SignInPage',
+			userID: ''
 		}
 	},
 	methods: {
+		setBattleLists() {
+			this.component = 'BattleLists'
+		},
 		setBattlePage() {
 			this.component = 'BattlePage'
 		},
 		setCreateAccount() {
 			this.component = 'CreateUser'
 		},
+		setCustomMonster() {
+			this.component = 'CustomMonster'
+		},
 		setMainPage() {
 			this.component = 'MainPage'
 		},
 		setSignInPage() {
 			this.component = 'SignInPage'
+		},
+		setUserID(data) {
+			console.log('App.vue\'s userID set to ', data)
+			this.userID = data
 		}
 	}
 }

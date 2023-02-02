@@ -72,6 +72,8 @@ export default {
 			for (let i = 0; i < this.numberOfUsers; i++) {
 				if (this.users[i].strUsername == this.username) {
 					if (this.users[i].strPassword == this.password ) {
+						console.log('intUserID: ', this.users[i].intUserID)
+						this.$emit('update', this.users[i].intUserID)
 						this.$parent.setMainPage()
 					} else {
 						console.log('users[i]: ', this.users[i])

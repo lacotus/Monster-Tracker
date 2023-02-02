@@ -27,6 +27,10 @@ handled
 
 50. Add input validation to SignInPage
 
+51. Add CR, XP and speed to MonsterInstance
+
+52. Add CR, XP and speed to monsters table in db
+
 ===============
 == Completed ==
 ===============

@@ -1,0 +1,88 @@
+<template>
+
+	<div class="bl-container">
+
+		<div class="bl-header">
+			<label class="bl-label align-vertical">Battle Lists</label>
+			<button class="bl-button align-vertical" v-on:click="addMonster()">add</button>
+		</div>
+		<div class="bl-main-area">
+			<div v-for="count in counts">
+			
+			</div>
+		</div>
+
+	</div>
+</template>
+
+<script>
+import {getUserBattles, updateUserID} from '@/services/UserServices'
+
+export default {
+	name: 'BattleLists',
+	data() {
+		return {
+			counts: 1,
+			battles: []
+		}
+	},
+	methods: {
+		addMonster() {
+			this.counts ++
+		},
+		getUserBattles(userID) {
+			getUserBattles(userID).then(response => {
+				battles = response
+				console.log(response)
+			})
+		}
+	},
+	mounted: function() {
+		console.log('BattleList reading parent userID: ', this.$parent.userID)
+		updateUserID(this.$parent.userID) 
+	}
+}
+</script>
+
+<style>
+
+	.align-vertical {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	.bl-button {
+		float: right;
+		width: 10vw;
+		height: 10vh;
+	}
+
+	.bl-header {
+		background-color: black;
+		display: flex;
+		flex-direction: row;
+		width: 100vw;
+		height: 20vh;
+	}
+
+	.bl-label {
+		color: white;
+		margin-left: 42px;
+		font-size: 30px;
+	}
+
+	.bl-main-area {
+		border: 2px solid black;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		overflow-y: auto;
+		height: 75vh;
+	}
+
+	.bl-margin-auto {
+		margin: 1vw;
+	}
+
+</style>
+

@@ -27,6 +27,8 @@ handled
 
 50. Add input validation to SignInPage
 
+51. Add CR, XP and speed to MonsterInstance
+
 ===============
 == Completed ==
 ===============
@@ -73,6 +75,7 @@ mounted() part of page2
 44. Add dynamic component to App.vue - done
 46. Create CreateUser.vue component - done
 43. Write login function bones - done
+52. Add CR, XP and speed to monsters table in db - done
 
 ===========
 == Notes ==

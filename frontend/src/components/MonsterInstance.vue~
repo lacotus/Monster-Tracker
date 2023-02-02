@@ -103,8 +103,8 @@ export default {
 		border-width: 3px;
 		display: flex;
 		flex-direction: column;
-		width: 600px;
-		height: 320px;
+		width: 30vw;
+		height: 35vh;
 		z-index: 1;
 	}
 
