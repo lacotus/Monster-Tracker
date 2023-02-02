@@ -8,10 +8,9 @@ export async function getAllUsers() {
 
 }
 
-export async function getUserBattles(userID) {
+export async function getUserBattles() {
 
-	console.log('UserService\'s reading of userID: ', userID)
-	const response = await fetch('/userbattles', { body: { 'userID': userID} });
+	const response = await fetch('/users/battles');
 	return await response.json();
 
 }
@@ -32,8 +31,12 @@ export async function createUser(data) {
 }
 
 export async function updateUserID(data) {
-	
-	return fetch(`/userbattles`, {
+
+	console.log('updateUserID in UserServices was ran.')
+	console.log('data: ', data)
+	console.log('JSON.stringify: ', JSON.stringify(data))
+
+	return fetch('/users/battles', {
 		method: "POST",
 		headers: {"Content-Type": "application/json"},
 		body: JSON.stringify(data)

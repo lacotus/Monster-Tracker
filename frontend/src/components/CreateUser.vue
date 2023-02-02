@@ -67,8 +67,10 @@ export default {
 				const dataObject = { username: this.strUsername, password: this.strPasswordOriginal }
 				createUser(dataObject).then(res => {
 					console.log('res.msg: ', res.msg)
+					console.log('res.userID: ', res.userID)
 					if (res.msg == 'Created User') {
 						alert("Created user")
+						this.$emit('update', res.userID)
 						this.$parent.setMainPage()
 					}})
 				.catch(err => {

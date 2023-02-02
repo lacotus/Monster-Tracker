@@ -30,16 +30,22 @@ export default {
 		addMonster() {
 			this.counts ++
 		},
-		getUserBattles(userID) {
-			getUserBattles(userID).then(response => {
+		getUserBattles() {
+			getUserBattles().then(response => {
 				battles = response
 				console.log(response)
+			})
+		},
+		startupFunction() {
+			updateUserID({ userID: this.$parent.userID }).then(response => { console.log(response.msg) })
+			getUserBattles().then(response => { 
+				console.log('response: ', response) 
+				battles = response
 			})
 		}
 	},
 	mounted: function() {
-		console.log('BattleList reading parent userID: ', this.$parent.userID)
-		updateUserID(this.$parent.userID) 
+		this.startupFunction()
 	}
 }
 </script>

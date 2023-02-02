@@ -89,23 +89,23 @@ app.get('/users', async (req, res) => {
 
 });
 
-app.get('/userbattles', async (req, res) => {
+app.get('/users/battles', async (req, res) => {
 
- const userID = req.body.userID
- console.log('userID: ', userID)
- const query = "SELECT FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + 4
-console.log(query)
- const results = await db.promise().query()
+  const query = "SELECT b.intBattleID, b.strName FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + this.userID
+  console.log(query)
+  const results = await db.promise().query(query)
+  console.log(results[0])
+  res.send(results[0])
 
 });
 
-app.post('/userbattles', async (req, res) => {
-  console.log('/userbattles req.body.userID: ', req.body.userID)
+app.post('/users/battles', async (req, res) => {
+  console.log('/users/battles req.body.userID: ', req.body.userID)
   this.userID = req.body.userID 
   if (this.userID != '') {
-    res.status(201).send({ msg: 'Updated userID' })
+    res.status(201).send({ msg: 'Updated userID on server' })
   } else {
-    res.status(201).send({ msg: 'Failed to update userID' })
+    res.status(201).send({ msg: 'Failed to update userID on server' })
   }
 })
 
@@ -126,7 +126,7 @@ app.post('/users', async (req, res) => {
 
       // Insert values into the db
       db.promise().query(`INSERT INTO USERS VALUES('${nextPrimaryKeyConstant}', '${username}', '${password}')`);
-      res.status(201).send({ msg: 'Created User' });
+      res.status(201).send({ msg: 'Created User', userID: nextPrimaryKeyConstant });
 
     } catch (err) {
       console.log(err);
