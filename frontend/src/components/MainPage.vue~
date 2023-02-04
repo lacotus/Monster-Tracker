@@ -4,8 +4,8 @@
 		<div class="mp-container">
 
 			<label>Welcome, traveler!<br><br>Choose your path:</label>
-			<button class="" v-on:click="gotoBattleLists()">Battle Lists</button>
-			<button v-on:click="gotoCustomMonster()">Custom NPCs</button>
+			<button class="mp-button" v-on:click="gotoBattleLists()">Battle Lists</button>
+			<button class="mp-button" v-on:click="gotoCustomMonster()">Custom NPCs</button>
 
 		</div>
 	</div>

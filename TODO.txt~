@@ -29,7 +29,9 @@ handled
 
 51. Add CR, XP and speed to MonsterInstance
 
-52. Add CR, XP and speed to monsters table in db
+54. Build html and css for BattleItem
+
+55. Build out JS for BattleItem
 
 ===============
 == Completed ==
@@ -77,6 +79,8 @@ mounted() part of page2
 44. Add dynamic component to App.vue - done
 46. Create CreateUser.vue component - done
 43. Write login function bones - done
+52. Add CR, XP and speed to monsters table in db - done
+53. Input validation for SignInPage - done
 
 ===========
 == Notes ==

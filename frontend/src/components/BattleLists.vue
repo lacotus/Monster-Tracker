@@ -7,8 +7,8 @@
 			<button class="bl-button align-vertical" v-on:click="addMonster()">add</button>
 		</div>
 		<div class="bl-main-area">
-			<div v-for="count in counts">
-			
+			<div v-for="(battle, index) in battles">
+				<BattleItem class="bl-battle-item" :battleName="name" :description="description" />
 			</div>
 		</div>
 
@@ -17,14 +17,22 @@
 
 <script>
 import {getUserBattles, updateUserID} from '@/services/UserServices'
+import BattleItem from './BattleItem'
 
 export default {
 	name: 'BattleLists',
 	data() {
 		return {
 			counts: 1,
-			battles: []
+			battles: [],
+		
+			// test variables, delete later
+			name: 'name',
+			description: 'description'
 		}
+	},
+	components: {
+		BattleItem
 	},
 	methods: {
 		addMonster() {
@@ -57,6 +65,12 @@ export default {
 		margin-bottom: auto;
 	}
 
+	.bl-battle-item {
+		margin-left: 15vw;
+		width: 40vw;
+		height: 10vh;
+	}
+
 	.bl-button {
 		float: right;
 		width: 10vw;
@@ -80,14 +94,14 @@ export default {
 	.bl-main-area {
 		border: 2px solid black;
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+		flex-direction: column;
 		overflow-y: auto;
 		height: 75vh;
 	}
 
-	.bl-margin-auto {
-		margin: 1vw;
+	.bl-main-area > * {
+		margin-top: 1vh;
+		margin-bottom: 1vh;
 	}
 
 </style>
