@@ -40,7 +40,7 @@ export default {
 			updateUserID({ userID: this.$parent.userID }).then(response => { console.log(response.msg) })
 			getUserBattles().then(response => { 
 				console.log('response: ', response) 
-				battles = response
+				this.battles = response
 			})
 		}
 	},
