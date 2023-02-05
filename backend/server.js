@@ -91,7 +91,7 @@ app.get('/users', async (req, res) => {
 
 app.get('/users/battles', async (req, res) => {
 
-  const query = "SELECT b.intBattleID, b.strName FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + this.userID
+  const query = "SELECT b.intBattleID, b.strName, b.strDescription FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + this.userID
   console.log(query)
   const results = await db.promise().query(query)
   console.log(results[0])

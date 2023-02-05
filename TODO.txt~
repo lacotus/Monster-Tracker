@@ -1,6 +1,6 @@
 ==========
-= ODO ==
-=========
+== TODO ==
+==========
 
 6.  Add weapons scrollbar to MonsterInstance (formally called Monster object)
 
@@ -25,13 +25,11 @@ handled
 
 49. Fix password match css border issue
 
-50. Add input validation to SignInPage
-
 51. Add CR, XP and speed to MonsterInstance
 
-54. Build html and css for BattleItem
+56. Build addBattle function in BattleLists.vue
 
-55. Build out JS for BattleItem
+57. Add frontend routing
 
 ===============
 == Completed ==
@@ -81,6 +79,9 @@ mounted() part of page2
 43. Write login function bones - done
 52. Add CR, XP and speed to monsters table in db - done
 53. Input validation for SignInPage - done
+50. Add input validation to SignInPage - done
+54. Build html and css for BattleItem - done
+55. Build out JS for BattleItem - done
 
 ===========
 == Notes ==

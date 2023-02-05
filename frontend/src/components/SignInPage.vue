@@ -11,11 +11,13 @@
 			<input 
 				v-bind:class="{'border-black': validUsername, 'border-red': !validUsername}"
 				v-model="username" 
+				v-on:keyup.enter="loginFunction()"
 				placeholder="Username...">
 			<!--<label style="margin-top: 3vh;">Password:</label>-->
 			<input 
 				v-bind:class="{'border-black': validPassword, 'border-red': !validPassword}"
 				v-model="password" 
+				v-on:keyup.enter="loginFunction()"
 				type="password" 
 				style="margin-top: 1vh;" 
 				placeholder="Password...">
@@ -80,7 +82,7 @@ export default {
 						if (this.users[i].strPassword == this.password ) {
 							console.log('intUserID: ', this.users[i].intUserID)
 							this.$emit('update', this.users[i].intUserID)
-							this.$parent.setMainPage()
+							this.$router.go('home')
 						} else {
 							console.log('users[i]: ', this.users[i])
 							alert('Password incorrect')

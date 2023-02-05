@@ -8,7 +8,11 @@
 		</div>
 		<div class="bl-main-area">
 			<div v-for="(battle, index) in battles">
-				<BattleItem class="bl-battle-item" :battleName="name" :description="description" />
+				<BattleItem 
+					class="bl-battle-item" 
+					v-on:click="gotoBattle(battles[index].intBattleID)"
+					:battleName="battles[index].strName" 
+					:description="battles[index].strDescription" />
 			</div>
 		</div>
 
@@ -44,11 +48,16 @@ export default {
 				console.log(response)
 			})
 		},
+		gotoBattle(battleID) {
+			var alertMessage = 'battleID: ' + battleID
+			alert(alertMessage)
+		},
 		startupFunction() {
 			updateUserID({ userID: this.$parent.userID }).then(response => { console.log(response.msg) })
 			getUserBattles().then(response => { 
 				console.log('response: ', response) 
 				this.battles = response
+				console.log('battles[0][1]: ', this.battles[0].strName)
 			})
 		}
 	},
@@ -66,8 +75,8 @@ export default {
 	}
 
 	.bl-battle-item {
-		margin-left: 15vw;
-		width: 40vw;
+		margin-left: 12.5vw;
+		width: 50vw;
 		height: 10vh;
 	}
 

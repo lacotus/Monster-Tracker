@@ -3,7 +3,7 @@
 	<div class="container bordered">
 
 		<label>{{ battleName }}</label>
-		<label>{{ description }}</label>
+		<label style="font-size: 12px;">{{ description }}</label>
 
 	</div>
 
@@ -17,6 +17,9 @@ export default {
 			//battleName: '',
 			//description: ''
 		}
+	},
+	mounted: function() {
+		console.log("battleName: ", this.battleName, "\ndescription: ", this.description);
 	},
 	props: ['battleName', 'description']
 }
@@ -34,8 +37,16 @@ export default {
 		display: flex;
 		flex-direction: column;
 		justify-content: left;
-		padding-left: 15%;
-		padding-right: 15%;
+		overflow-y: scroll;
+		padding-left: 10%;
+		padding-right: 10%;
+		/* Hide scrollbar */
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.container::-webkit-scrollbar {
+		display: none;
 	}
 
 </style>
