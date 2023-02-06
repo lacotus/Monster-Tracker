@@ -30,7 +30,6 @@
 
 <script>
 import {getAllUsers, createUser } from '@/services/UserServices'
-import router from '@/router/index.js'
 
 export default {
 	name: 'SignInPage',
@@ -67,7 +66,7 @@ export default {
 			console.log('Width and height: ', width, height)
 		},
 		gotoCreateAccount() {
-			this.$parent.setCreateAccount()
+			this.$router.push('createuser')
 		},
 		loginFunction() {
 			
@@ -83,7 +82,7 @@ export default {
 						if (this.users[i].strPassword == this.password ) {
 							console.log('intUserID: ', this.users[i].intUserID)
 							this.$emit('update', this.users[i].intUserID)
-							this.$router.go('home')
+							this.$router.push('home')
 						} else {
 							console.log('users[i]: ', this.users[i])
 							alert('Password incorrect')

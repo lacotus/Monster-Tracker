@@ -1,24 +1,37 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Register from '@/components/Register.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 import MainPage from '@/components/MainPage.vue'
+import SignInPage from '@/components/SignInPage.vue'
+import BattleList from '@/components/BattleLists.vue'
+import CreateUser from '@/components/CreateUser.vue'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/battlelist',
+    name: 'BattleList',
+    component: BattleList
+  },
+  {
+    path: '/createuser',
+    name: 'CreateUser',
+    component: CreateUser
+  },
+  {
+    path: '/home',
+    name: 'MainPage',
+    component: MainPage
+  },
+  {
+    path: '/',
+    name: 'SignInPage',
+    component: SignInPage
+  }
+]
 
-const newRouter = new Router({
-  routes: [
-    {
-      path: '/register',
-      name: 'register',
-      component: Register
-    },
-    {
-      path: '/home',
-      name: 'home',
-      componenet: MainPage 
-    }
-  ]
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 })
 
-export newRouter
+export default router
 

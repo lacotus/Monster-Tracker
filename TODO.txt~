@@ -23,13 +23,9 @@ handled
 
 48. Update BattlePage CSS to be percentage based
 
-49. Fix password match css border issue
-
 51. Add CR, XP and speed to MonsterInstance
 
 56. Build addBattle function in BattleLists.vue
-
-57. Add frontend routing
 
 ===============
 == Completed ==
@@ -82,6 +78,8 @@ mounted() part of page2
 50. Add input validation to SignInPage - done
 54. Build html and css for BattleItem - done
 55. Build out JS for BattleItem - done
+57. Add frontend routing - done
+49. Fix password match css border issue - done
 
 ===========
 == Notes ==

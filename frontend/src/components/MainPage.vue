@@ -17,7 +17,7 @@ export default {
 	name: 'MainPage',
 	methods: {
 		gotoBattleLists() {
-			this.$parent.setBattleLists()
+			this.$router.push('battlelist')
 		},
 		gotoCustomMonster() {
 			this.$parent.setCustomMonster()

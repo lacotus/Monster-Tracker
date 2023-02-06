@@ -71,7 +71,7 @@ export default {
 					if (res.msg == 'Created User') {
 						alert("Created user")
 						this.$emit('update', res.userID)
-						this.$parent.setMainPage()
+						this.$router.push('home')
 					}})
 				.catch(err => {
 						console.error(err)
@@ -184,13 +184,13 @@ export default {
 			// check that this.strPasswordOriginal == this.strPasswordConfirmation
 			
 			if (this.strPasswordOriginal == this.strPasswordConfirmation) {
-				this.validPasswordOriginal == true
-				this.validPasswordConfirmation == true
+				this.validPasswordOriginal = true
+				this.validPasswordConfirmation = true
 				return true
 
 			} else {	
-				this.validPasswordOriginal == false
-				this.validPasswordConfirmation == false
+				this.validPasswordOriginal = false
+				this.validPasswordConfirmation = false
 				alert('Passwords must match')
 				return false
 

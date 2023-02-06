@@ -1,8 +1,8 @@
 <template>
 	<div>
 
-		<component v-bind:is="component" v-model="userID" @update="setUserID"></component>
-
+		<!--<component v-bind:is="component" v-model="userID" @update="setUserID"></component>-->
+		<router-view></router-view>
 	</div>
 </template>
 
