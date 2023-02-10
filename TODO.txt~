@@ -13,19 +13,13 @@ handled
 
 37. Page2 save data
 
-38. Create sign in page component
-
-40. Query for existing users
-
-41. Fix link css in Sign in page component
-
-42. Fix json object returned in SignInPage, change strUsername to username
-
 48. Update BattlePage CSS to be percentage based
 
 51. Add CR, XP and speed to MonsterInstance
 
 56. Build addBattle function in BattleLists.vue
+
+57. Fix battles not loading into BattleLists
 
 ===============
 == Completed ==
@@ -80,6 +74,11 @@ mounted() part of page2
 55. Build out JS for BattleItem - done
 57. Add frontend routing - done
 49. Fix password match css border issue - done
+42. Fix json object returned in SignInPage, change strUsername to username -
+    done
+38. Create sign in page component - done
+40. Query for existing users - done
+41. Fix link css in Sign in page component - done
 
 ===========
 == Notes ==

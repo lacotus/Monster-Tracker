@@ -19,6 +19,8 @@ handled
 
 56. Build addBattle function in BattleLists.vue
 
+57. Fix battles not loading into BattleLists
+
 ===============
 == Completed ==
 ===============

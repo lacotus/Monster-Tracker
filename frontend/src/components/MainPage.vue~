@@ -3,6 +3,9 @@
 	<div class="main">
 		<div class="mp-container">
 
+			<h1>{{ this.$route.params.test }}</h1>
+			<span>{{ getData }}</span>
+			{{router}}
 			<label>Welcome, traveler!<br><br>Choose your path:</label>
 			<button class="mp-button" v-on:click="gotoBattleLists()">Battle Lists</button>
 			<button class="mp-button" v-on:click="gotoCustomMonster()">Custom NPCs</button>
@@ -15,13 +18,34 @@
 <script>
 export default {
 	name: 'MainPage',
+	data() {
+		return {
+			userID: ''
+		}
+	},
+	computed: {
+		getData() {
+			var data = this.$route.params.test
+			return data
+		}
+	},
 	methods: {
+		getParams() {
+			console.log(this.$route.params)
+		},
 		gotoBattleLists() {
 			this.$router.push('battlelist')
 		},
 		gotoCustomMonster() {
 			this.$parent.setCustomMonster()
 		}
+	},
+	mounted: function() {
+		console.log('\n==============\n== MainPage ==\n==============\n')
+		this.userID = this.$route.params.userID
+		console.log('Route object: ', this.$route)
+		console.log('UserID passed into MainPage: ', this.$parent.userID)
+		this.getParams()
 	}
 }
 </script>

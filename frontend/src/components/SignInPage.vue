@@ -82,7 +82,10 @@ export default {
 						if (this.users[i].strPassword == this.password ) {
 							console.log('intUserID: ', this.users[i].intUserID)
 							this.$emit('update', this.users[i].intUserID)
-							this.$router.push('home')
+							this.$router.push({
+								name: 'home',
+								params: {test: 'test'}
+							})
 						} else {
 							console.log('users[i]: ', this.users[i])
 							alert('Password incorrect')
