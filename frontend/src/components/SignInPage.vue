@@ -84,7 +84,7 @@ export default {
 							this.$emit('update', this.users[i].intUserID)
 							this.$router.push({
 								name: 'home',
-								params: {test: 'test'}
+								params: {test: "test"}
 							})
 						} else {
 							console.log('users[i]: ', this.users[i])

@@ -44,7 +44,7 @@ export default {
 		console.log('\n==============\n== MainPage ==\n==============\n')
 		this.userID = this.$route.params.userID
 		console.log('Route object: ', this.$route)
-		console.log('UserID passed into MainPage: ', this.$parent.userID)
+		console.log('UserID passed into MainPage: ', this.$route.params.test)
 		this.getParams()
 	}
 }

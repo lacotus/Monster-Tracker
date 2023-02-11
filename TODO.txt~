@@ -19,7 +19,7 @@ handled
 
 56. Build addBattle function in BattleLists.vue
 
-57. Fix battles not loading into BattleLists
+57. Fix battles not loading into BattleLists * see note 1
 
 ===============
 == Completed ==
@@ -60,7 +60,7 @@ of intInput, put a style tag in to adjust border radius
 28. Add Ability Scores to page 2 - done
 36. Page2 data biding - done
 34. Bug: Not switching back to page1 from page2 - resolved by removing code in
-mounted() part of page2
+    mounted() part of page2
 39. Code frontend of sign in page component - done
 45. Add switch to main content page when login function is ran - done
 47. Combine MainHeader and MonsterArea into one component - done
@@ -83,4 +83,9 @@ mounted() part of page2
 ===========
 == Notes ==
 ===========
+Note 1: Issue is related to params not being passed when the new router is
+	loaded. I am pretty sure that the code for passing the data is
+	correct, but the params are blank in the this.$route object on the
+	child component. I believe it has something to do with
+	asynchronization, a concept with which I am not too familiar.
 
