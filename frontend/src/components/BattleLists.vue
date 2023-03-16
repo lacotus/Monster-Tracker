@@ -29,6 +29,7 @@ export default {
 		return {
 			counts: 1,
 			battles: [],
+			userID: '',
 		
 			// test variables, delete later
 			name: 'name',
@@ -54,9 +55,10 @@ export default {
 		},
 		startupFunction() {
 			console.log('==================\n== Battle Lists ==\n==================')
-			var userID = this.$root.getUserID()
-			console.log('userID: ', userID)
-			updateUserID({ userID: this.$parent.userID }).then(response => { console.log(response.msg) })
+			
+			this.userID = this.$root.getUserID()
+			console.log('userID: ', this.$root.getUserID())
+
 			getUserBattles().then(response => { 
 				console.log('response: ', response) 
 				this.battles = response

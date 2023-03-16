@@ -75,24 +75,26 @@ export default {
 				// variable for testing if a username was found
 				var usernameFound = false
 
-				// for loop circles through all items in users[], first if statement looks for username, second compares the 
-				// password to the username if found
+				// for loop circles through all items in users[], first if statement looks for 
+				// username, second compares the password to the username if found
 				for (let i = 0; i < this.numberOfUsers; i++) {
+
 					if (this.users[i].strUsername == this.username) {
 						if (this.users[i].strPassword == this.password ) {
-							console.log('intUserID: ', this.users[i].intUserID)
+							//console.log('intUserID: ', this.users[i].intUserID)
 							this.$root.setUserID(this.users[i].intUserID)
-							this.$emit('update', this.users[i].intUserID)
 							this.$router.push({
-								'name': 'home',
-								'params': {'test': 'test', 'userID': '4'}
+								name: 'home'
 							})
+
 						} else {
 							console.log('users[i]: ', this.users[i])
 							alert('Password incorrect')
+
 						}
 						usernameFound = true
 					}
+
 				}
 
 				// If no username is found change border color and alert the user
