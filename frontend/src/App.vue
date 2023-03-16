@@ -31,6 +31,9 @@ export default {
 		}
 	},
 	methods: {
+		getUserID() {
+			return this.userID
+		},
 		setBattleLists() {
 			this.component = 'BattleLists'
 		},

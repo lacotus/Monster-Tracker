@@ -53,6 +53,9 @@ export default {
 			alert(alertMessage)
 		},
 		startupFunction() {
+			console.log('==================\n== Battle Lists ==\n==================')
+			var userID = this.$root.getUserID()
+			console.log('userID: ', userID)
 			updateUserID({ userID: this.$parent.userID }).then(response => { console.log(response.msg) })
 			getUserBattles().then(response => { 
 				console.log('response: ', response) 

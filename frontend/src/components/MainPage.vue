@@ -4,8 +4,6 @@
 		<div class="mp-container">
 
 			<h1>{{ this.$route.params.test }}</h1>
-			<span>{{ getData }}</span>
-			{{router}}
 			<label>Welcome, traveler!<br><br>Choose your path:</label>
 			<button class="mp-button" v-on:click="gotoBattleLists()">Battle Lists</button>
 			<button class="mp-button" v-on:click="gotoCustomMonster()">Custom NPCs</button>
@@ -42,9 +40,9 @@ export default {
 	},
 	mounted: function() {
 		console.log('\n==============\n== MainPage ==\n==============\n')
-		this.userID = this.$route.params.userID
-		console.log('Route object: ', this.$route)
-		console.log('UserID passed into MainPage: ', this.$route.params.test)
+		//this.userID = this.$route.params.userID
+		//console.log('Route object: ', this.$route)
+		console.log('UserID passed into MainPage: ', this.$route.params)
 		this.getParams()
 	}
 }

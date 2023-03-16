@@ -81,10 +81,11 @@ export default {
 					if (this.users[i].strUsername == this.username) {
 						if (this.users[i].strPassword == this.password ) {
 							console.log('intUserID: ', this.users[i].intUserID)
+							this.$root.setUserID(this.users[i].intUserID)
 							this.$emit('update', this.users[i].intUserID)
 							this.$router.push({
-								name: 'home',
-								params: {test: "test"}
+								'name': 'home',
+								'params': {'test': 'test', 'userID': '4'}
 							})
 						} else {
 							console.log('users[i]: ', this.users[i])
