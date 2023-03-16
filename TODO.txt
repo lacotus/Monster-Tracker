@@ -19,8 +19,6 @@ handled
 
 56. Build addBattle function in BattleLists.vue
 
-57. Fix battles not loading into BattleLists * see note 1
-
 ===============
 == Completed ==
 ===============
@@ -79,6 +77,7 @@ of intInput, put a style tag in to adjust border radius
 38. Create sign in page component - done
 40. Query for existing users - done
 41. Fix link css in Sign in page component - done
+57. Fix battles not loading into BattleLists * see note 1 - done
 
 ===========
 == Notes ==

@@ -18,7 +18,16 @@
 
 <script>
 export default {
-
+	name: 'BattlePage',
+	data() {
+		return {
+			battleID: ''
+		}
+	},
+	mounted: function() {
+		console.log('battleID: ', window.sessionStorage.getItem('battleID'))
+		this.battleID = window.sessionStorage.getItem('battleID')
+	}
 }
 </script>
 

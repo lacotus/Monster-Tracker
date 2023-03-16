@@ -91,16 +91,16 @@ app.get('/users', async (req, res) => {
 
 app.get('/users/battles', async (req, res) => {
 
-  const query = "SELECT b.intBattleID, b.strName, b.strDescription FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + this.userID
-  console.log(query)
+  
+  const query = "SELECT b.intBattleID, b.strName, b.strDescription FROM users as u JOIN userbattles as ub on u.intUserID = ub.intUserID JOIN battles as b on ub.intBattleID = b.intBattleID WHERE u.intUserID = " + req.query.userID
   const results = await db.promise().query(query)
-  console.log(results[0])
   res.send(results[0])
 
 });
 
 app.post('/users/battles', async (req, res) => {
   console.log('/users/battles req.body.userID: ', req.body.userID)
+
   this.userID = req.body.userID 
   if (this.userID != '') {
     res.status(201).send({ msg: 'Updated userID on server' })

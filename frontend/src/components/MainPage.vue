@@ -39,7 +39,7 @@ export default {
 	},
 	mounted: function() {
 		//console.log('\n==============\n== MainPage ==\n==============\n')
-		console.log('App.js userID: ', this.$root.getUserI())
+		//console.log('userID: ', window.sessionStorage.getItem('userID'))
 	},
 	watch: {
 		'$route.query.test'(newValue, oldValue) {

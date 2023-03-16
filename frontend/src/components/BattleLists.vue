@@ -51,14 +51,15 @@ export default {
 		},
 		gotoBattle(battleID) {
 			var alertMessage = 'battleID: ' + battleID
+			window.sessionStorage.setItem('battleID', battleID)
+			this.$router.push('battlepage')
 			alert(alertMessage)
 		},
 		startupFunction() {
 			console.log('==================\n== Battle Lists ==\n==================')
 			
 			this.userID = this.$root.getUserID()
-			console.log('userID: ', this.$root.getUserID())
-
+			console.log('userID: ', window.sessionStorage.getItem('userID'))
 			getUserBattles().then(response => { 
 				console.log('response: ', response) 
 				this.battles = response

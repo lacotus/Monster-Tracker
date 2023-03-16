@@ -10,7 +10,8 @@ export async function getAllUsers() {
 
 export async function getUserBattles() {
 
-	const response = await fetch('/users/battles');
+    const fetchURL = '/users/battles?userID=' + window.sessionStorage.getItem('userID');
+	const response = await fetch(fetchURL);
 	return await response.json();
 
 }

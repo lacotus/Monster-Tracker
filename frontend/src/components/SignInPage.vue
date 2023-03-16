@@ -23,6 +23,7 @@
 				placeholder="Password...">
 			<button v-on:click="loginFunction()" class="border-black">Login</button>
 			<button v-on:click="gotoCreateAccount()" class="border-black">Create Account</button>
+		
 		</div>
 	</div>
 
@@ -82,7 +83,8 @@ export default {
 					if (this.users[i].strUsername == this.username) {
 						if (this.users[i].strPassword == this.password ) {
 							//console.log('intUserID: ', this.users[i].intUserID)
-							this.$root.setUserID(this.users[i].intUserID)
+							//this.$root.setUserID(this.users[i].intUserID)
+							window.sessionStorage.setItem('userID', this.users[i].intUserID)
 							this.$router.push({
 								name: 'home'
 							})
