@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `mttest`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mttest` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `mttest`;
-
---
 -- Table structure for table `battles`
 --
 
@@ -33,6 +25,7 @@ DROP TABLE IF EXISTS `battles`;
 CREATE TABLE `battles` (
   `intBattleID` int NOT NULL,
   `strName` varchar(255) NOT NULL,
+  `strDescription` varchar(255) NOT NULL,
   PRIMARY KEY (`intBattleID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -43,7 +36,7 @@ CREATE TABLE `battles` (
 
 LOCK TABLES `battles` WRITE;
 /*!40000 ALTER TABLE `battles` DISABLE KEYS */;
-INSERT INTO `battles` VALUES (1,'Battle 1 - Zombie'),(2,'Battle 2 - Brown Bear');
+INSERT INTO `battles` VALUES (1,'Battle 1 - Zombie','First fight of the campaign, the players take on one zombie which is blocking their path. Supposed to be an easy fight to get the players to start testing out their battle dynamics.'),(2,'Battle 2 - Brown Bear','Second fight, brown bear sneaks up on player who takes second watch. DC 15 perception to prevent sneak attack and get a chance to take comrades.'),(3,'Battle 3 - Wolf','Wolf attacks local villager, if the players can kill the wolf in 1 turn the villager grants them a safe stay, otherwise the wolf kills the villager.');
 /*!40000 ALTER TABLE `battles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +65,7 @@ CREATE TABLE `monsterbattles` (
 
 LOCK TABLES `monsterbattles` WRITE;
 /*!40000 ALTER TABLE `monsterbattles` DISABLE KEYS */;
-INSERT INTO `monsterbattles` VALUES (1,1,1),(2,2,2);
+INSERT INTO `monsterbattles` VALUES (1,1,1),(2,2,2),(3,3,2);
 /*!40000 ALTER TABLE `monsterbattles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +102,7 @@ CREATE TABLE `monsters` (
 
 LOCK TABLES `monsters` WRITE;
 /*!40000 ALTER TABLE `monsters` DISABLE KEYS */;
-INSERT INTO `monsters` VALUES (1,'Zombie','22 (3d8 + 9)','8','-2','Undead Fortitude | Saving throws: Wis +0 | Damage immunities: poison | Condition immunities: poisoned','13','6','16','3','6','5','1/4','50','20ft'),(2,'Brown Bear','34 (4d10+12)','11','0','Keen Smell: Advantage on perception checks relating to smell | Skills: Perception + 3 | Multiattack: The bear makes one bite and one claw attack per attack action','19','10','16','2','13','7','1','200','40');
+INSERT INTO `monsters` VALUES (1,'Zombie','22 (3d8 + 9)','8','-2','Undead Fortitude | Saving throws: Wis +0 | Damage immunities: poison | Condition immunities: poisoned','13','6','16','3','6','5','1/4','50','20ft'),(2,'Brown Bear','34 (4d10+12)','11','0','Keen Smell: Advantage on perception checks relating to smell | Skills: Perception + 3 | Multiattack: The bear makes one bite and one claw attack per attack action','19','10','16','2','13','7','1','200','40'),(3,'Tiger','37 (5d10 + 10)','12','2','Keen Smell, Pounce','17','15','14','3','12','8','1','200','40');
 /*!40000 ALTER TABLE `monsters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +131,7 @@ CREATE TABLE `userbattles` (
 
 LOCK TABLES `userbattles` WRITE;
 /*!40000 ALTER TABLE `userbattles` DISABLE KEYS */;
-INSERT INTO `userbattles` VALUES (1,2,1),(2,1,2);
+INSERT INTO `userbattles` VALUES (1,2,1),(2,1,2),(3,1,3);
 /*!40000 ALTER TABLE `userbattles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +156,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'cotus','km051818'),(2,'cacmuffin','calvin');
+INSERT INTO `users` VALUES (1,'cotus','km051818'),(2,'cacmuffin','calvin'),(3,'karl','marc');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-01 22:15:44
+-- Dump completed on 2023-03-17 15:21:49
