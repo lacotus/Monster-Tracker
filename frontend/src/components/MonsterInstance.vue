@@ -10,7 +10,8 @@
 						class="input" 
 						placeholder="Name..." 
 						type="text" 
-						:value="nameValue">
+						:value="nameValue"
+						v-on:input="calcTextWidth">
 			</div>
 
 			<!-- Settings button -->
@@ -28,12 +29,16 @@
 		<!-- Bottom bar -->
 		<component v-bind:is="component"></component>
 
+		<!-- Measure inpName text width -->
+		<div id="inpMeasureText"></div>
+
 	</div>
 </template>
 
 <script>
 import Page1 from './MonsterInstanceComponents/Page1.vue'
 import Page2 from './MonsterInstanceComponents/Page2.vue'
+import { ref, watchEffect } from 'vue'
 
 export default {
 	name: 'MonsterInstance',
@@ -53,12 +58,16 @@ export default {
 	},
 	methods: {
 		calcTextWidth: function() {
-			const canvas = document.createElement('canvas')
-			const context = canvas.getConext('2d')
+			// Get fontSize for inpName
+			var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
+			var fontSize = parseFloat(style)
 
-			context.font = font || getComputedStyle(document.body).font
-
-			return context.measureText(text).width
+			// Set fontSize in test element, then set test element's content, then measure the width
+			var elTextMeasure = document.getElementById('inpMeasureText')
+			elTextMeasure.style.fontSize = fontSize;
+			elTextMeasure.innerHTML = document.getElementById('inpName').value
+			var width = (elTextMeasure.clientWidth)
+			console.log('Text width: ', width)
 		},
 		displayComponent: function() {
 			console.log(this.component);
@@ -134,7 +143,6 @@ export default {
 	}
 
 	.name {
-		padding-left: 20px;
 		width: 73.3%;
 		height: 100%;
 	}
@@ -143,6 +151,18 @@ export default {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
+	}
+
+	#divTopBar > * {
+		margin: 15vh, 5vw;
+	}
+
+	#inpMeasureText {
+		position: absolute;
+		visibility: hidden;
+		height: auto;
+		width: auto;
+		white-space: nowrap;
 	}
 
 </style>
