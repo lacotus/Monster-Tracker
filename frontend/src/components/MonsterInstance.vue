@@ -1,12 +1,16 @@
 <template>
-	<div id="MonsterContainer" class="MonsterContainer">
+	<div id="MonsterContainer" ref="MonsterContainer" class="MonsterContainer">
 
 		<!-- Top bar -->
 		<div id="divTopBar" class="row" ref="divTopBar" style="height: 25%">
 
 			<!-- Name input -->
 			<div id="row" class="centerContent name">
-				<input id="inpName" class="input" placeholder="Name..." type="text">
+				<input 	id="inpName" 
+						class="input" 
+						placeholder="Name..." 
+						type="text" 
+						:value="nameValue">
 			</div>
 
 			<!-- Settings button -->
@@ -37,12 +41,25 @@ export default {
 		'page-one': Page1,
 		'page-two': Page2
 	},
+	computed: {
+		nameValue() {
+			return this.monsterObject.strName
+		}
+	},
 	data() {
 		return {
 			component: 'page-one'
 		}
 	},
 	methods: {
+		calcTextWidth: function() {
+			const canvas = document.createElement('canvas')
+			const context = canvas.getConext('2d')
+
+			context.font = font || getComputedStyle(document.body).font
+
+			return context.measureText(text).width
+		},
 		displayComponent: function() {
 			console.log(this.component);
 		},
@@ -68,11 +85,19 @@ export default {
 		this.$refs.cogImg.height = height;
 
 		console.log({ height });
-		// }
 		
+		// Window demensions
+		var width = this.$refs.MonsterContainer.offsetWidth
+		var newHeight = this.$refs.MonsterContainer.offsetHeight
+
+		console.log('width: ', width, '\nheight: ', newHeight)
+	
 	},
 	props: {
-		title: String,
+		monsterObject: {
+			type: Object,
+			required: true
+		}
 	}
 }
 

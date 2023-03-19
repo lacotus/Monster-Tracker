@@ -16,6 +16,14 @@ export async function getUserBattles() {
 
 }
 
+export async function getMonsterBattles() {
+	
+	const fetchURL = '/users/monsterbattles?battleID=' + window.sessionStorage.getItem('battleID');
+	const response = await fetch(fetchURL);
+	return await response.json();
+
+}
+
 export async function createUser(data) {
 	
 	console.log('createUser in UserServices was ran.')

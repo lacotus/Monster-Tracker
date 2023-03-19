@@ -19,6 +19,12 @@ handled
 
 56. Build addBattle function in BattleLists.vue
 
+60. Fill MonsterInstance components with the correct data
+
+61. Remove alert in BattleLists
+
+62. Break MonsterInstance's mounted function into a separate functions
+
 ===============
 == Completed ==
 ===============
@@ -78,6 +84,8 @@ of intInput, put a style tag in to adjust border radius
 40. Query for existing users - done
 41. Fix link css in Sign in page component - done
 57. Fix battles not loading into BattleLists * see note 1 - done
+58. Import monster data into BattlePage.vue - done
+59. Create MonsterInstance components for each monster in data - done
 
 ===========
 == Notes ==

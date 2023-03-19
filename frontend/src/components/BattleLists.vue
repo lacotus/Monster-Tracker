@@ -32,8 +32,6 @@ export default {
 			userID: '',
 		
 			// test variables, delete later
-			name: 'name',
-			description: 'description'
 		}
 	},
 	components: {

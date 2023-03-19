@@ -98,6 +98,14 @@ app.get('/users/battles', async (req, res) => {
 
 });
 
+app.get('/users/monsterbattles', async (req, res) => {
+
+  const query = "SELECT * FROM monsterbattles as mb JOIN monsters as m ON mb.intMonsterID = m.intMonsterID WHERE mb.intBattleID = " + req.query.battleID
+  const results = await db.promise().query(query)
+  res.send(results[0])
+
+});
+
 app.post('/users/battles', async (req, res) => {
   console.log('/users/battles req.body.userID: ', req.body.userID)
 
