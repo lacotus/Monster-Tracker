@@ -48,10 +48,8 @@ export default {
 			})
 		},
 		gotoBattle(battleID) {
-			var alertMessage = 'battleID: ' + battleID
 			window.sessionStorage.setItem('battleID', battleID)
 			this.$router.push('battlepage')
-			alert(alertMessage)
 		},
 		startupFunction() {
 			console.log('==================\n== Battle Lists ==\n==================')

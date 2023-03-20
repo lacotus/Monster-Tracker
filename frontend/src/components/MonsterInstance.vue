@@ -15,12 +15,12 @@
 			</div>
 
 			<!-- Settings button -->
-			<a ref="cogContainer" @click="changePages()" class="centerContent" >
+			<div class="centerContent testBackground" @click="changePages" style="width: 12.5%; height: 100%;">
 				<img src="@/assets/cog.png" ref="cogImg" />
-			</a>
+			</div>
 
 			<!-- Check input -->
-			<div id="divCheckbox" class="centerContent" style="width: 13.3%; height: 100%;">
+			<div id="divCheckbox" class="centerContent testBackground2" style="width: 7.5%; height: 100%;">
 				<input id="chkCheckbox" type="checkbox" style="width: 15px; height: 15px;">
 			</div>
 	
@@ -53,21 +53,41 @@ export default {
 	},
 	data() {
 		return {
-			component: 'page-one'
+			component: 'page-one',
+			textWidth: ''
 		}
 	},
 	methods: {
+		calcCogSize: function() {
+			// This is to set the height of the png in the setting button of the top bar {	
+			let height = this.$refs.divTopBar.clientHeight - 20;
+	
+			this.$refs.cogImg.width = height;
+			this.$refs.cogImg.height = height;
+
+			console.log({ height });
+		},
 		calcTextWidth: function() {
 			// Get fontSize for inpName
 			var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
 			var fontSize = parseFloat(style)
 
-			// Set fontSize in test element, then set test element's content, then measure the width
-			var elTextMeasure = document.getElementById('inpMeasureText')
-			elTextMeasure.style.fontSize = fontSize;
-			elTextMeasure.innerHTML = document.getElementById('inpName').value
-			var width = (elTextMeasure.clientWidth)
-			console.log('Text width: ', width)
+			// Build test element, set it's fontSize, then set it's content
+			var el = document.getElementById('inpMeasureText')
+			el.style.fontSize = fontSize;
+			el.innerHTML = document.getElementById('inpName').value
+			
+			// Setup width variables
+			var totalWidth = document.getElementById('inpName').clientWidth / 3
+			this.textWidth = el.clientWidth
+
+			// Output (for testing)
+			console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
+
+			// Test if the input text is greater than the total width, run setInputWidth
+			if (this.textWidth > totalWidth) {
+				this.setInputWidth()
+			}
 		},
 		displayComponent: function() {
 			console.log(this.component);
@@ -78,6 +98,26 @@ export default {
 			} else {
 				this.component = 'page-one';
 			}
+		},
+		setInputWidth: function() {
+			// Setup variables
+			var input = document.getElementById('inpName')
+			var inputText = input.value
+			var textArray = inputText.split(' ')
+			var wordCount = textArray.length
+
+			// Calculate break point entering, splice in at that point
+			var breakPoint = (wordCount - 1) / 2
+			if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
+			console.log('breakPoint', breakPoint)
+			var newContent = '\n'
+			textArray.splice(breakPoint, 0, newContent)
+
+			// Set new textSize
+			input.style.fontSize = (window.getComputedStyle(input).fontSize) / 2
+
+			// Output (for testing)
+			console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
 		}
 	},
 	mounted: function () {
@@ -85,21 +125,8 @@ export default {
 		// Set first component to Page1
 		this.currentComponent = this.component
 
-		// This is to set the height of the png in the setting button of the top bar {	
-		let height = this.$refs.divTopBar.clientHeight - 20;
-	
-		this.$refs.cogContainer.width = height;
-		this.$refs.cogContainer.height = height;	
-		this.$refs.cogImg.width = height;
-		this.$refs.cogImg.height = height;
-
-		console.log({ height });
-		
-		// Window demensions
-		var width = this.$refs.MonsterContainer.offsetWidth
-		var newHeight = this.$refs.MonsterContainer.offsetHeight
-
-		console.log('width: ', width, '\nheight: ', newHeight)
+		// Calculate size for the cog png
+		this.calcCogSize()
 	
 	},
 	props: {
@@ -120,12 +147,13 @@ export default {
 		justify-content: center;
 	}
 
+	
+
    .input {
         border: 0px;
 		font-family: "Cutive";
         font-size: 30px;
         outline: none;
-        padding-left: 20px;
         width: 95%;
 	}
 
@@ -143,7 +171,7 @@ export default {
 	}
 
 	.name {
-		width: 73.3%;
+		width: 80%;
 		height: 100%;
 	}
 
@@ -151,10 +179,7 @@ export default {
 		display: flex;
 		flex-direction: row;
 		width: 100%;
-	}
-
-	#divTopBar > * {
-		margin: 15vh, 5vw;
+		align-items: right;
 	}
 
 	#inpMeasureText {
@@ -163,6 +188,14 @@ export default {
 		height: auto;
 		width: auto;
 		white-space: nowrap;
+	}
+
+	.testBackground {
+		background-color: yellow;
+	}
+
+	.testBackground2 {
+		background-color: green;
 	}
 
 </style>

@@ -21,9 +21,13 @@ handled
 
 60. Fill MonsterInstance components with the correct data
 
-61. Remove alert in BattleLists
+63. Fix divTopBar CSS
 
-62. Break MonsterInstance's mounted function into a separate functions
+64. Fix Page1 CSS
+
+65. Fix Page2 Css
+
+66. Seperate frontend calculation functions into their own class
 
 ===============
 == Completed ==
@@ -86,6 +90,8 @@ of intInput, put a style tag in to adjust border radius
 57. Fix battles not loading into BattleLists * see note 1 - done
 58. Import monster data into BattlePage.vue - done
 59. Create MonsterInstance components for each monster in data - done
+61. Remove alert in BattleLists - done
+62. Break MonsterInstance's mounted function into a separate functions - done
 
 ===========
 == Notes ==
