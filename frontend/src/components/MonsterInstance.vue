@@ -6,12 +6,12 @@
 
 			<!-- Name input -->
 			<div id="row" class="centerContent name">
-				<input 	id="inpName" 
-						class="input" 
-						placeholder="Name..." 
-						type="text" 
-						:value="nameValue"
-						v-on:input="calcTextWidth">
+				<TextArea 	id="inpName" 
+							class="input" 
+							placeholder="Name..." 
+							type="text" 
+							:value="nameValue"
+							v-on:input="calcTextWidth" />
 			</div>
 
 			<!-- Settings button -->
@@ -114,7 +114,12 @@ export default {
 			textArray.splice(breakPoint, 0, newContent)
 
 			// Set new textSize
-			input.style.fontSize = (window.getComputedStyle(input).fontSize) / 2
+			var oldFontSize = window.getComputedStyle(input).fontSize
+			oldFontSize = oldFontSize.replace('px', '')
+			var newFontSize = oldFontSize / 2
+			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			input.style.fontSize = String(newFontSize) + 'px'
+			input.value = textArray.join() 
 
 			// Output (for testing)
 			console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
@@ -150,11 +155,13 @@ export default {
 	
 
    .input {
-        border: 0px;
+    	background-color: yellow;
+	    border: 0px;
 		font-family: "Cutive";
         font-size: 30px;
         outline: none;
         width: 95%;
+		height: 100%;
 	}
 
 	
