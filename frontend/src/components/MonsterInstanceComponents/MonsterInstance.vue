@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import Page1 from './MonsterInstanceComponents/Page1.vue'
-import Page2 from './MonsterInstanceComponents/Page2.vue'
+import Page1 from './Page1.vue'
+import Page2 from './Page2.vue'
 import { ref, watchEffect } from 'vue'
 
 export default {
@@ -132,6 +132,8 @@ export default {
 
 		// Calculate size for the cog png
 		this.calcCogSize()
+
+		this.calcTextWidth()
 	
 	},
 	props: {
@@ -162,6 +164,12 @@ export default {
         outline: none;
         width: 95%;
 		height: 100%;
+
+		/* Hide the scrollbar */
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		overflow: -moz-scrollbars-none; /* Firefox */
+		overflow: hidden; /* Chrome and Safari */
 	}
 
 	

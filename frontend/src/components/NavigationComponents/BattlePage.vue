@@ -18,7 +18,7 @@
 
 <script>
 import {getMonsterBattles} from '@/services/UserServices'
-import MonsterInstance from './MonsterInstance'
+import MonsterInstance from '../MonsterInstanceComponents/MonsterInstance'
 
 export default {
 	name: 'BattlePage',

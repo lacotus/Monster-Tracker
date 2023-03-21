@@ -92,6 +92,7 @@ of intInput, put a style tag in to adjust border radius
 59. Create MonsterInstance components for each monster in data - done
 61. Remove alert in BattleLists - done
 62. Break MonsterInstance's mounted function into a separate functions - done
+67. Reorganize components folder - done
 
 ===========
 == Notes ==

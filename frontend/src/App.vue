@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import BattlePage from './components/BattlePage.vue'
-import SignInPage from './components/SignInPage.vue'
-import CreateUser from './components/CreateUser.vue'
-import MainPage from './components/MainPage.vue'
-import BattleLists from './components/BattleLists.vue'
+import BattlePage from './components/NavigationComponents/BattlePage.vue'
+import SignInPage from './components/SignInComponents/SignInPage.vue'
+import CreateUser from './components/SignInComponents/CreateUser.vue'
+import MainPage from './components/NavigationComponents/MainPage.vue'
+import BattleLists from './components/NavigationComponents/BattleLists.vue'
 import CustomMonster from './components/CustomMonster'
 
 export default {

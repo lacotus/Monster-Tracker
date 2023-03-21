@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/components/MainPage.vue'
-import SignInPage from '@/components/SignInPage.vue'
-import BattleList from '@/components/BattleLists.vue'
-import BattlePage from '@/components/BattlePage.vue'
-import CreateUser from '@/components/CreateUser.vue'
+import Home from '@/components/NavigationComponents/MainPage.vue'
+import SignInPage from '@/components/SignInComponents/SignInPage.vue'
+import BattleList from '@/components/NavigationComponents/BattleLists.vue'
+import BattlePage from '@/components/NavigationComponents/BattlePage.vue'
+import CreateUser from '@/components/SignInComponents/CreateUser.vue'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
