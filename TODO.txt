@@ -29,6 +29,8 @@ handled
 
 66. Seperate frontend calculation functions into their own class
 
+68. Fix BattlePage top bar CSS
+
 ===============
 == Completed ==
 ===============

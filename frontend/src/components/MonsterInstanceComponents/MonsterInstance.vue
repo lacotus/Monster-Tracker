@@ -6,21 +6,21 @@
 
 			<!-- Name input -->
 			<div id="row" class="centerContent name">
-				<TextArea 	id="inpName" 
+				<textarea 	id="inpName" 
 							class="input" 
 							placeholder="Name..." 
 							type="text" 
 							:value="nameValue"
-							v-on:input="calcTextWidth" />
+							v-on:input="calcTextWidth" ></textarea>
 			</div>
 
 			<!-- Settings button -->
-			<div class="centerContent testBackground" @click="changePages" style="width: 12.5%; height: 100%;">
+			<div class="centerContent" @click="changePages" style="width: 12.5%; height: 100%;">
 				<img src="@/assets/cog.png" ref="cogImg" />
 			</div>
 
 			<!-- Check input -->
-			<div id="divCheckbox" class="centerContent testBackground2" style="width: 7.5%; height: 100%;">
+			<div id="divCheckbox" class="centerContent" style="width: 7.5%; height: 100%;">
 				<input id="chkCheckbox" type="checkbox" style="width: 15px; height: 15px;">
 			</div>
 	
@@ -54,6 +54,7 @@ export default {
 	data() {
 		return {
 			component: 'page-one',
+			smallText: false,
 			textWidth: ''
 		}
 	},
@@ -68,25 +69,28 @@ export default {
 			console.log({ height });
 		},
 		calcTextWidth: function() {
-			// Get fontSize for inpName
-			var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
-			var fontSize = parseFloat(style)
+			if (this.smallText == false) {
+				// Get fontSize for inpName
+				var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
+				var fontSize = parseFloat(style)
 
-			// Build test element, set it's fontSize, then set it's content
-			var el = document.getElementById('inpMeasureText')
-			el.style.fontSize = fontSize;
-			el.innerHTML = document.getElementById('inpName').value
-			
-			// Setup width variables
-			var totalWidth = document.getElementById('inpName').clientWidth / 3
-			this.textWidth = el.clientWidth
+				// Build test element, set it's fontSize, then set it's content
+				var el = document.getElementById('inpMeasureText')
+				el.style.fontSize = fontSize;
+				el.innerHTML = document.getElementById('inpName').value
+				
+				// Setup width variables
+				var totalWidth = document.getElementById('inpName').clientWidth / 3
+				this.textWidth = el.clientWidth
 
-			// Output (for testing)
-			console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
+				// Output (for testing)
+				console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
 
-			// Test if the input text is greater than the total width, run setInputWidth
-			if (this.textWidth > totalWidth) {
-				this.setInputWidth()
+				// Test if the input text is greater than the total width, run setInputWidth
+				if (this.textWidth > totalWidth && this.smallText == false) {
+					this.setInputWidth()
+					this.smallText = true
+				}
 			}
 		},
 		displayComponent: function() {
@@ -100,29 +104,34 @@ export default {
 			}
 		},
 		setInputWidth: function() {
-			// Setup variables
-			var input = document.getElementById('inpName')
-			var inputText = input.value
-			var textArray = inputText.split(' ')
-			var wordCount = textArray.length
+			if (this.smallText == false) {
+				console.log('===================\n== setInputWidth ==\n===================')
+				console.log('this.smallText: ', this.smallText)
 
-			// Calculate break point entering, splice in at that point
-			var breakPoint = (wordCount - 1) / 2
-			if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
-			console.log('breakPoint', breakPoint)
-			var newContent = '\n'
-			textArray.splice(breakPoint, 0, newContent)
+				// Setup variables
+				var input = document.getElementById('inpName')
+				var inputText = input.value
+				var textArray = inputText.split(' ')
+				var wordCount = textArray.length
 
-			// Set new textSize
-			var oldFontSize = window.getComputedStyle(input).fontSize
-			oldFontSize = oldFontSize.replace('px', '')
-			var newFontSize = oldFontSize / 2
-			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
-			input.style.fontSize = String(newFontSize) + 'px'
-			input.value = textArray.join() 
+				// Calculate break point entering, splice in at that point
+				var breakPoint = (wordCount - 1) / 2
+				if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
+				console.log('breakPoint', breakPoint)
+				var newContent = '\n'
+				textArray.splice(breakPoint, 0, newContent)
 
-			// Output (for testing)
-			console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
+				// Set new textSize
+				var oldFontSize = window.getComputedStyle(input).fontSize
+				oldFontSize = oldFontSize.replace('px', '')
+				var newFontSize = oldFontSize / 2
+				console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+				input.style.fontSize = String(newFontSize) + 'px'
+				input.value = textArray.join() 
+
+				// Output (for testing)
+				console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
+			}
 		}
 	},
 	mounted: function () {
