@@ -7,11 +7,11 @@
 			<!-- Name input -->
 			<div id="row" class="centerContent name">
 				<textarea 	id="inpName" 
+							ref="inpName"
 							class="input" 
 							placeholder="Name..." 
 							type="text" 
-							:value="nameValue"
-							v-on:input="calcTextWidth" ></textarea>
+							v-model="monsterName"></textarea>
 			</div>
 
 			<!-- Settings button -->
@@ -46,16 +46,13 @@ export default {
 		'page-one': Page1,
 		'page-two': Page2
 	},
-	computed: {
-		nameValue() {
-			return this.monsterObject.strName
-		}
-	},
+	computed: {},
 	data() {
 		return {
 			component: 'page-one',
 			smallText: false,
-			textWidth: ''
+			textWidth: '',
+			monsterName: this.monsterObject.strName
 		}
 	},
 	methods: {
@@ -70,6 +67,7 @@ export default {
 		},
 		calcTextWidth: function() {
 			if (this.smallText == false) {
+				
 				// Get fontSize for inpName
 				var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
 				var fontSize = parseFloat(style)
@@ -77,7 +75,7 @@ export default {
 				// Build test element, set it's fontSize, then set it's content
 				var el = document.getElementById('inpMeasureText')
 				el.style.fontSize = fontSize;
-				el.innerHTML = document.getElementById('inpName').value
+				el.innerHTML = this.$refs.inpName.value
 				
 				// Setup width variables
 				var totalWidth = document.getElementById('inpName').clientWidth / 3
@@ -88,9 +86,10 @@ export default {
 
 				// Test if the input text is greater than the total width, run setInputWidth
 				if (this.textWidth > totalWidth && this.smallText == false) {
-					this.setInputWidth()
 					this.smallText = true
+					this.setInputWidth()
 				}
+				
 			}
 		},
 		displayComponent: function() {
@@ -104,34 +103,34 @@ export default {
 			}
 		},
 		setInputWidth: function() {
-			if (this.smallText == false) {
-				console.log('===================\n== setInputWidth ==\n===================')
-				console.log('this.smallText: ', this.smallText)
+			console.log('===================\n== setInputWidth ==\n===================')
 
-				// Setup variables
-				var input = document.getElementById('inpName')
-				var inputText = input.value
-				var textArray = inputText.split(' ')
-				var wordCount = textArray.length
+			// Setup variables
+			var input = this.$refs.inpName
+			var inputText = input.value
+			var textArray = inputText.split(' ')
+			var wordCount = textArray.length
 
-				// Calculate break point entering, splice in at that point
-				var breakPoint = (wordCount - 1) / 2
-				if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
-				console.log('breakPoint', breakPoint)
-				var newContent = '\n'
-				textArray.splice(breakPoint, 0, newContent)
+			console.log('textArray: ', textArray)
 
-				// Set new textSize
-				var oldFontSize = window.getComputedStyle(input).fontSize
-				oldFontSize = oldFontSize.replace('px', '')
-				var newFontSize = oldFontSize / 2
-				console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
-				input.style.fontSize = String(newFontSize) + 'px'
-				input.value = textArray.join() 
+			// Calculate break point entering, splice in at that point
+			var breakPoint = (wordCount - 1) / 2
+			if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
+			console.log('breakPoint', breakPoint)
+			var newContent = '\n'
+			var textVar = textArray.splice(breakPoint, 0, newContent)
+			console.log('textArray.splice: ', textVar)
 
-				// Output (for testing)
-				console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
-			}
+			// Set new textSize
+			var oldFontSize = window.getComputedStyle(input).fontSize
+			oldFontSize = oldFontSize.replace('px', '')
+			var newFontSize = oldFontSize / 2
+			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			input.style.fontSize = String(newFontSize) + 'px'
+			input.value = textArray.join('') 
+
+			// Output (for testing)
+			console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
 		}
 	},
 	mounted: function () {
@@ -141,7 +140,7 @@ export default {
 
 		// Calculate size for the cog png
 		this.calcCogSize()
-
+		
 		this.calcTextWidth()
 	
 	},
