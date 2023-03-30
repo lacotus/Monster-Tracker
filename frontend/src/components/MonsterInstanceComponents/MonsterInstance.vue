@@ -52,7 +52,10 @@ export default {
 			component: 'page-one',
 			smallText: false,
 			textWidth: '',
-			monsterName: this.monsterObject.strName
+			monsterName: this.monsterObject.strName,
+
+			width: '',
+			height: ''
 		}
 	},
 	methods: {
@@ -66,31 +69,32 @@ export default {
 			console.log({ height });
 		},
 		calcTextWidth: function() {
-			if (this.smallText == false) {
 				
-				// Get fontSize for inpName
-				var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
-				var fontSize = parseFloat(style)
+			// Get fontSize for inpName
+			var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
+			var fontSize = parseFloat(style)
 
-				// Build test element, set it's fontSize, then set it's content
-				var el = document.getElementById('inpMeasureText')
-				el.style.fontSize = fontSize;
-				el.innerHTML = this.$refs.inpName.value
-				
-				// Setup width variables
-				var totalWidth = document.getElementById('inpName').clientWidth / 3
-				this.textWidth = el.clientWidth
+			// Build test element, set it's fontSize, then set it's content
+			var el = document.getElementById('inpMeasureText')
+			el.style.fontSize = fontSize;
+			el.innerHTML = ''
+			el.innerHTML = this.$refs.inpName.value
+			
+			// Setup width variables
+			var totalWidth = document.getElementById('inpName').clientWidth / 3
+			this.textWidth = el.clientWidth
 
-				// Output (for testing)
-				console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
+			// Output (for testing)
+			console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
+			console.log('this.textWidth: ', this.textWidth, '\ntotalWidth: ', totalWidth)
 
-				// Test if the input text is greater than the total width, run setInputWidth
-				if (this.textWidth > totalWidth && this.smallText == false) {
-					this.smallText = true
-					this.setInputWidth()
-				}
-				
+			// Test if the input text is greater than the total width, run setInputWidth
+			if (this.textWidth > totalWidth) {
+				console.log('ran')
+				this.smallText = true
+				this.setInputWidth()
 			}
+				
 		},
 		displayComponent: function() {
 			console.log(this.component);
@@ -101,6 +105,11 @@ export default {
 			} else {
 				this.component = 'page-one';
 			}
+		},
+		getDimensions: function() {
+			this.width = window.innerWidth
+			this.height = window.innerHeight
+			console.log('width: ', this.width, '\nheight: ', this.height)
 		},
 		setInputWidth: function() {
 			console.log('===================\n== setInputWidth ==\n===================')
@@ -141,8 +150,18 @@ export default {
 		// Calculate size for the cog png
 		this.calcCogSize()
 		
+		// Run calcTextWidth on creation of component
 		this.calcTextWidth()
+
+		// Event listener for window resizing
+		window.addEventListener('resize', this.calcTextWidth)
 	
+	},
+	unmounted: function() {
+		
+		// Remove event listener
+		window.removeEventListener('resize', this.getDimensions)
+
 	},
 	props: {
 		monsterObject: {

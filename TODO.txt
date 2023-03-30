@@ -31,7 +31,11 @@ handled
 
 68. Fix BattlePage top bar CSS
 
-===============
+69. Write function to make text larger again
+
+70. Fix glitch where spaces are removed when text is resized
+
+==============
 == Completed ==
 ===============
 1.  Setup top bar (MainHeader.vue) - done
