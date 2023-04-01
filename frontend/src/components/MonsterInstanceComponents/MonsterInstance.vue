@@ -11,7 +11,8 @@
 							class="input" 
 							placeholder="Name..." 
 							type="text" 
-							v-model="monsterName"></textarea>
+							v-model="monsterName"
+							:style="inpStyleObject"></textarea>
 			</div>
 
 			<!-- Settings button -->
@@ -30,7 +31,7 @@
 		<component v-bind:is="component"></component>
 
 		<!-- Measure inpName text width -->
-		<div id="inpMeasureText" ref="inpMeasureText" class="testBackground2"></div>
+		<div id="inpMeasureText" ref="inpMeasureText" class="testBackground2" :style="inpStyleObject"></div>
 
 	</div>
 </template>
@@ -50,10 +51,13 @@ export default {
 	data() {
 		return {
 			component: 'page-one',
-			smallText: false,
 			textWidth: '',
 			monsterName: this.monsterObject.strName,
 
+			inpStyleObject: {
+				fontSize: '30px',
+				fontFamily: 'Cutive'
+			},
 			width: '',
 			height: ''
 		}
@@ -70,17 +74,12 @@ export default {
 		},
 		calcTextWidth: function() {
 				
-			// Get fontSize for inpName
-			var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
-			var fontSize = parseFloat(style)
-
 			// Build test element, set it's fontSize, then set it's content
 			var el = this.$refs.inpMeasureText
 			el.innerHTML = this.$refs.inpName.value
-			el.style.fontSize = fontSize * 3
 			
 			// Setup width variables
-			var totalWidth = document.getElementById('inpName').clientWidth / 3
+			var totalWidth = this.$refs.inpName.clientWidth
 			this.textWidth = el.clientWidth
 
 			// Output (for testing)
@@ -88,9 +87,9 @@ export default {
 
 			// Test if the input text is greater than the total width, run setInputWidth
 			if (this.textWidth > totalWidth) {
-				console.log('triggered')
-				this.smallText = true
-				this.setInputWidth()
+				this.setInputWidth('small')
+			} else if (this.textWidth * 2 > totalWidth && this.inpStyleObject.fontSize != '30px') {
+				this.setInputWidth('big')
 			}
 				
 		},
@@ -109,35 +108,16 @@ export default {
 			this.height = window.innerHeight
 			console.log('width: ', this.width, '\nheight: ', this.height)
 		},
-		setInputWidth: function() {
-			//console.log('===================\n== setInputWidth ==\n===================')
+		setInputWidth: function(size) {
+			
+			// Set new textSize by 1 - grab current textSize from inpStyle object, 
+			// 2 - perform logic (either divide or multiply by 2), 3 - to console for testing, 
+			// 4 - set new style based on logic performed in line 2
+			var oldFontSize = this.inpStyleObject.fontSize.replace('px', '')
+			var newFontSize = size == 'small' ? oldFontSize / 2 : oldFontSize * 2
+			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			this.inpStyleObject.fontSize = newFontSize + 'px'
 
-			// Setup variables
-			var input = this.$refs.inpName
-			var inputText = input.value
-			var textArray = inputText.split(' ')
-			var wordCount = textArray.length
-
-			//console.log('textArray: ', textArray)
-
-			// Calculate break point entering, splice in at that point
-			//var breakPoint = (wordCount - 1) / 2
-			//if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
-			//console.log('breakPoint', breakPoint)
-			//var newContent = '\n'
-			//var textVar = textArray.splice(breakPoint, 0, newContent)
-			//console.log('textArray.splice: ', textVar)
-
-			// Set new textSize
-			var oldFontSize = window.getComputedStyle(input).fontSize
-			oldFontSize = oldFontSize.replace('px', '')
-			var newFontSize = oldFontSize / 2
-			//console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
-			input.style.fontSize = String(newFontSize) + 'px'
-			//input.value = textArray.join('') 
-
-			// Output (for testing)
-			//console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
 		}
 	},
 	mounted: function () {
@@ -184,8 +164,6 @@ export default {
    .input {
     	background-color: yellow;
 	    border: 0px;
-		font-family: "Cutive";
-        font-size: 30px;
         outline: none;
         width: 95%;
 		height: 100%;
@@ -224,6 +202,7 @@ export default {
 
 	#inpMeasureText {
 		position: absolute;
+		visibility: hidden; 
 		height: auto;
 		width: auto;
 		white-space: nowrap;

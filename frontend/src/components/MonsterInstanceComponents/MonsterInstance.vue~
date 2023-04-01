@@ -6,21 +6,22 @@
 
 			<!-- Name input -->
 			<div id="row" class="centerContent name">
-				<input 	id="inpName" 
-						class="input" 
-						placeholder="Name..." 
-						type="text" 
-						:value="nameValue"
-						v-on:input="calcTextWidth">
+				<textarea 	id="inpName" 
+							ref="inpName"
+							class="input" 
+							placeholder="Name..." 
+							type="text" 
+							v-model="monsterName"
+							:style="inpStyleObject"></textarea>
 			</div>
 
 			<!-- Settings button -->
-			<div class="centerContent testBackground" @click="changePages" style="width: 12.5%; height: 100%;">
+			<div class="centerContent" @click="changePages" style="width: 12.5%; height: 100%;">
 				<img src="@/assets/cog.png" ref="cogImg" />
 			</div>
 
 			<!-- Check input -->
-			<div id="divCheckbox" class="centerContent testBackground2" style="width: 7.5%; height: 100%;">
+			<div id="divCheckbox" class="centerContent" style="width: 7.5%; height: 100%;">
 				<input id="chkCheckbox" type="checkbox" style="width: 15px; height: 15px;">
 			</div>
 	
@@ -30,14 +31,14 @@
 		<component v-bind:is="component"></component>
 
 		<!-- Measure inpName text width -->
-		<div id="inpMeasureText"></div>
+		<div id="inpMeasureText" ref="inpMeasureText" class="testBackground2" :style="inpStyleObject"></div>
 
 	</div>
 </template>
 
 <script>
-import Page1 from './MonsterInstanceComponents/Page1.vue'
-import Page2 from './MonsterInstanceComponents/Page2.vue'
+import Page1 from './Page1.vue'
+import Page2 from './Page2.vue'
 import { ref, watchEffect } from 'vue'
 
 export default {
@@ -46,15 +47,19 @@ export default {
 		'page-one': Page1,
 		'page-two': Page2
 	},
-	computed: {
-		nameValue() {
-			return this.monsterObject.strName
-		}
-	},
+	computed: {},
 	data() {
 		return {
 			component: 'page-one',
-			textWidth: ''
+			textWidth: '',
+			monsterName: this.monsterObject.strName,
+
+			inpStyleObject: {
+				fontSize: '30px',
+				fontFamily: 'Cutive'
+			},
+			width: '',
+			height: ''
 		}
 	},
 	methods: {
@@ -68,26 +73,25 @@ export default {
 			console.log({ height });
 		},
 		calcTextWidth: function() {
-			// Get fontSize for inpName
-			var style = window.getComputedStyle(document.getElementById('inpName')).fontSize
-			var fontSize = parseFloat(style)
-
+				
 			// Build test element, set it's fontSize, then set it's content
-			var el = document.getElementById('inpMeasureText')
-			el.style.fontSize = fontSize;
-			el.innerHTML = document.getElementById('inpName').value
+			var el = this.$refs.inpMeasureText
+			el.innerHTML = this.$refs.inpName.value
 			
 			// Setup width variables
-			var totalWidth = document.getElementById('inpName').clientWidth / 3
+			var totalWidth = this.$refs.inpName.clientWidth
 			this.textWidth = el.clientWidth
 
 			// Output (for testing)
-			console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
+			console.log('monster: ', this.$refs.inpName.value, '\nthis.textWidth: ', this.textWidth, '\ntotalWidth: ', totalWidth)
 
 			// Test if the input text is greater than the total width, run setInputWidth
 			if (this.textWidth > totalWidth) {
-				this.setInputWidth()
+				this.setInputWidth('small')
+			} else if (this.textWidth * 2 > totalWidth && this.inpStyleObject.fontSize != '30px') {
+				this.setInputWidth('big')
 			}
+				
 		},
 		displayComponent: function() {
 			console.log(this.component);
@@ -99,25 +103,21 @@ export default {
 				this.component = 'page-one';
 			}
 		},
-		setInputWidth: function() {
-			// Setup variables
-			var input = document.getElementById('inpName')
-			var inputText = input.value
-			var textArray = inputText.split(' ')
-			var wordCount = textArray.length
+		getDimensions: function() {
+			this.width = window.innerWidth
+			this.height = window.innerHeight
+			console.log('width: ', this.width, '\nheight: ', this.height)
+		},
+		setInputWidth: function(size) {
+			
+			// Set new textSize by 1 - grab current textSize from inpStyle object, 
+			// 2 - perform logic (either divide or multiply by 2), 3 - to console for testing, 
+			// 4 - set new style based on logic performed in line 2
+			var oldFontSize = this.inpStyleObject.fontSize.replace('px', '')
+			var newFontSize = size == 'small' ? oldFontSize / 2 : oldFontSize * 2
+			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			this.inpStyleObject.fontSize = newFontSize + 'px'
 
-			// Calculate break point entering, splice in at that point
-			var breakPoint = (wordCount - 1) / 2
-			if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
-			console.log('breakPoint', breakPoint)
-			var newContent = '\n'
-			textArray.splice(breakPoint, 0, newContent)
-
-			// Set new textSize
-			input.style.fontSize = (window.getComputedStyle(input).fontSize) / 2
-
-			// Output (for testing)
-			console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
 		}
 	},
 	mounted: function () {
@@ -127,7 +127,19 @@ export default {
 
 		// Calculate size for the cog png
 		this.calcCogSize()
+		
+		// Run calcTextWidth on creation of component
+		this.calcTextWidth()
+
+		// Event listener for window resizing
+		window.addEventListener('resize', this.calcTextWidth)
 	
+	},
+	unmounted: function() {
+		
+		// Remove event listener
+		window.removeEventListener('resize', this.getDimensions)
+
 	},
 	props: {
 		monsterObject: {
@@ -150,11 +162,17 @@ export default {
 	
 
    .input {
-        border: 0px;
-		font-family: "Cutive";
-        font-size: 30px;
+    	background-color: yellow;
+	    border: 0px;
         outline: none;
         width: 95%;
+		height: 100%;
+
+		/* Hide the scrollbar */
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		overflow: -moz-scrollbars-none; /* Firefox */
+		overflow: hidden; /* Chrome and Safari */
 	}
 
 	
@@ -184,7 +202,7 @@ export default {
 
 	#inpMeasureText {
 		position: absolute;
-		visibility: hidden;
+		visibility: hidden; 
 		height: auto;
 		width: auto;
 		white-space: nowrap;
