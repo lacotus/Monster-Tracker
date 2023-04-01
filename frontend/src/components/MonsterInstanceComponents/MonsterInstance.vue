@@ -30,7 +30,7 @@
 		<component v-bind:is="component"></component>
 
 		<!-- Measure inpName text width -->
-		<div id="inpMeasureText"></div>
+		<div id="inpMeasureText" ref="inpMeasureText" class="testBackground2"></div>
 
 	</div>
 </template>
@@ -75,22 +75,20 @@ export default {
 			var fontSize = parseFloat(style)
 
 			// Build test element, set it's fontSize, then set it's content
-			var el = document.getElementById('inpMeasureText')
-			el.style.fontSize = fontSize;
-			el.innerHTML = ''
+			var el = this.$refs.inpMeasureText
 			el.innerHTML = this.$refs.inpName.value
+			el.style.fontSize = fontSize * 3
 			
 			// Setup width variables
 			var totalWidth = document.getElementById('inpName').clientWidth / 3
 			this.textWidth = el.clientWidth
 
 			// Output (for testing)
-			console.log('Total width: ', totalWidth, '\nthis.textWidth: ', this.textWidth)
-			console.log('this.textWidth: ', this.textWidth, '\ntotalWidth: ', totalWidth)
+			console.log('monster: ', this.$refs.inpName.value, '\nthis.textWidth: ', this.textWidth, '\ntotalWidth: ', totalWidth)
 
 			// Test if the input text is greater than the total width, run setInputWidth
 			if (this.textWidth > totalWidth) {
-				console.log('ran')
+				console.log('triggered')
 				this.smallText = true
 				this.setInputWidth()
 			}
@@ -112,7 +110,7 @@ export default {
 			console.log('width: ', this.width, '\nheight: ', this.height)
 		},
 		setInputWidth: function() {
-			console.log('===================\n== setInputWidth ==\n===================')
+			//console.log('===================\n== setInputWidth ==\n===================')
 
 			// Setup variables
 			var input = this.$refs.inpName
@@ -120,26 +118,26 @@ export default {
 			var textArray = inputText.split(' ')
 			var wordCount = textArray.length
 
-			console.log('textArray: ', textArray)
+			//console.log('textArray: ', textArray)
 
 			// Calculate break point entering, splice in at that point
-			var breakPoint = (wordCount - 1) / 2
-			if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
-			console.log('breakPoint', breakPoint)
-			var newContent = '\n'
-			var textVar = textArray.splice(breakPoint, 0, newContent)
-			console.log('textArray.splice: ', textVar)
+			//var breakPoint = (wordCount - 1) / 2
+			//if (breakPoint % 1 != 0) { breakPoint = breakPoint + .5}
+			//console.log('breakPoint', breakPoint)
+			//var newContent = '\n'
+			//var textVar = textArray.splice(breakPoint, 0, newContent)
+			//console.log('textArray.splice: ', textVar)
 
 			// Set new textSize
 			var oldFontSize = window.getComputedStyle(input).fontSize
 			oldFontSize = oldFontSize.replace('px', '')
 			var newFontSize = oldFontSize / 2
-			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			//console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
 			input.style.fontSize = String(newFontSize) + 'px'
-			input.value = textArray.join('') 
+			//input.value = textArray.join('') 
 
 			// Output (for testing)
-			console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
+			//console.log('inputText: ', inputText, '\nwordCount: ', wordCount, '\nNew string: ', textArray.join())
 		}
 	},
 	mounted: function () {
@@ -226,7 +224,6 @@ export default {
 
 	#inpMeasureText {
 		position: absolute;
-		visibility: hidden;
 		height: auto;
 		width: auto;
 		white-space: nowrap;
