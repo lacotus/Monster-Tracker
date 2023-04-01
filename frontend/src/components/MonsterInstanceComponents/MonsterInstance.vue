@@ -31,7 +31,10 @@
 		<component v-bind:is="component"></component>
 
 		<!-- Measure inpName text width -->
-		<div id="inpMeasureText" ref="inpMeasureText" class="testBackground2" :style="inpStyleObject"></div>
+		<div 	id="inpMeasureText" 
+				ref="inpMeasureText" 
+				class="testBackground2" 
+				:style="inpStyleObject"></div>
 
 	</div>
 </template>
@@ -51,7 +54,6 @@ export default {
 	data() {
 		return {
 			component: 'page-one',
-			textWidth: '',
 			monsterName: this.monsterObject.strName,
 
 			inpStyleObject: {
@@ -80,15 +82,15 @@ export default {
 			
 			// Setup width variables
 			var totalWidth = this.$refs.inpName.clientWidth
-			this.textWidth = el.clientWidth
+			var textWidth = el.clientWidth
 
 			// Output (for testing)
-			console.log('monster: ', this.$refs.inpName.value, '\nthis.textWidth: ', this.textWidth, '\ntotalWidth: ', totalWidth)
+			console.log('monster: ', this.$refs.inpName.value, '\ntextWidth: ', textWidth, '\ntotalWidth: ', totalWidth)
 
 			// Test if the input text is greater than the total width, run setInputWidth
-			if (this.textWidth > totalWidth) {
+			if (textWidth > totalWidth) {
 				this.setInputWidth('small')
-			} else if (this.textWidth * 2 > totalWidth && this.inpStyleObject.fontSize != '30px') {
+			} else if (textWidth > totalWidth / 2 && textWidth < totalWidth) {
 				this.setInputWidth('big')
 			}
 				
@@ -202,7 +204,6 @@ export default {
 
 	#inpMeasureText {
 		position: absolute;
-		visibility: hidden; 
 		height: auto;
 		width: auto;
 		white-space: nowrap;
