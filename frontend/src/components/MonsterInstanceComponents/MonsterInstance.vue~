@@ -31,7 +31,10 @@
 		<component v-bind:is="component"></component>
 
 		<!-- Measure inpName text width -->
-		<div id="inpMeasureText" ref="inpMeasureText" class="testBackground2" :style="inpStyleObject"></div>
+		<div 	id="inpMeasureText" 
+				ref="inpMeasureText" 
+				class="testBackground2" 
+				style="fontFamily: 'Cutive'; fontSize: 30px;"></div>
 
 	</div>
 </template>
@@ -51,7 +54,6 @@ export default {
 	data() {
 		return {
 			component: 'page-one',
-			textWidth: '',
 			monsterName: this.monsterObject.strName,
 
 			inpStyleObject: {
@@ -59,7 +61,8 @@ export default {
 				fontFamily: 'Cutive'
 			},
 			width: '',
-			height: ''
+			height: '',
+			smallText: false
 		}
 	},
 	methods: {
@@ -80,15 +83,17 @@ export default {
 			
 			// Setup width variables
 			var totalWidth = this.$refs.inpName.clientWidth
-			this.textWidth = el.clientWidth
+			var textWidth = el.clientWidth
 
 			// Output (for testing)
-			console.log('monster: ', this.$refs.inpName.value, '\nthis.textWidth: ', this.textWidth, '\ntotalWidth: ', totalWidth)
+			//console.log('monster: ', this.$refs.inpName.value, '\ntextWidth: ', textWidth, '\ntotalWidth: ', totalWidth)
 
 			// Test if the input text is greater than the total width, run setInputWidth
-			if (this.textWidth > totalWidth) {
+			if (textWidth > totalWidth && this.smallText == false) {
+				this.smallText = true
 				this.setInputWidth('small')
-			} else if (this.textWidth * 2 > totalWidth && this.inpStyleObject.fontSize != '30px') {
+			} else if (textWidth < totalWidth && this.smallText == true) {
+				this.smallText = false
 				this.setInputWidth('big')
 			}
 				
@@ -115,7 +120,7 @@ export default {
 			// 4 - set new style based on logic performed in line 2
 			var oldFontSize = this.inpStyleObject.fontSize.replace('px', '')
 			var newFontSize = size == 'small' ? oldFontSize / 2 : oldFontSize * 2
-			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			//console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
 			this.inpStyleObject.fontSize = newFontSize + 'px'
 
 		}
@@ -162,11 +167,14 @@ export default {
 	
 
    .input {
-    	background-color: yellow;
 	    border: 0px;
-        outline: none;
+		resize: none;
+		outline: none;
         width: 95%;
 		height: 100%;
+
+		margin-top: 20px;
+
 
 		/* Hide the scrollbar */
 		scrollbar-width: none; /* Firefox */
@@ -202,7 +210,7 @@ export default {
 
 	#inpMeasureText {
 		position: absolute;
-		visibility: hidden; 
+		visibility: hidden;
 		height: auto;
 		width: auto;
 		white-space: nowrap;

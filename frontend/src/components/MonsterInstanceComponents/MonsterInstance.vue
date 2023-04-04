@@ -34,7 +34,7 @@
 		<div 	id="inpMeasureText" 
 				ref="inpMeasureText" 
 				class="testBackground2" 
-				:style="inpStyleObject"></div>
+				style="fontFamily: 'Cutive'; fontSize: 30px;"></div>
 
 	</div>
 </template>
@@ -61,7 +61,8 @@ export default {
 				fontFamily: 'Cutive'
 			},
 			width: '',
-			height: ''
+			height: '',
+			smallText: false
 		}
 	},
 	methods: {
@@ -85,12 +86,14 @@ export default {
 			var textWidth = el.clientWidth
 
 			// Output (for testing)
-			console.log('monster: ', this.$refs.inpName.value, '\ntextWidth: ', textWidth, '\ntotalWidth: ', totalWidth)
+			//console.log('monster: ', this.$refs.inpName.value, '\ntextWidth: ', textWidth, '\ntotalWidth: ', totalWidth)
 
 			// Test if the input text is greater than the total width, run setInputWidth
-			if (textWidth > totalWidth) {
+			if (textWidth > totalWidth && this.smallText == false) {
+				this.smallText = true
 				this.setInputWidth('small')
-			} else if (textWidth > totalWidth / 2 && textWidth < totalWidth) {
+			} else if (textWidth < totalWidth && this.smallText == true) {
+				this.smallText = false
 				this.setInputWidth('big')
 			}
 				
@@ -117,7 +120,7 @@ export default {
 			// 4 - set new style based on logic performed in line 2
 			var oldFontSize = this.inpStyleObject.fontSize.replace('px', '')
 			var newFontSize = size == 'small' ? oldFontSize / 2 : oldFontSize * 2
-			console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
+			//console.log('oldFontSize: ', oldFontSize, '\nnewFontSize: ', newFontSize)
 			this.inpStyleObject.fontSize = newFontSize + 'px'
 
 		}
@@ -164,11 +167,14 @@ export default {
 	
 
    .input {
-    	background-color: yellow;
 	    border: 0px;
-        outline: none;
+		resize: none;
+		outline: none;
         width: 95%;
 		height: 100%;
+
+		margin-top: 20px;
+
 
 		/* Hide the scrollbar */
 		scrollbar-width: none; /* Firefox */
@@ -204,6 +210,7 @@ export default {
 
 	#inpMeasureText {
 		position: absolute;
+		visibility: hidden;
 		height: auto;
 		width: auto;
 		white-space: nowrap;

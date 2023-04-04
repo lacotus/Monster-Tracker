@@ -35,7 +35,7 @@ export default {
 	methods: {
 		startupFunction() {
 			// Grab battleID, display to console, then set this.battleID, then store in window
-			console.log('=================\n== Battle Page ===\n=================')
+			console.log('=================\n== Battle Page ==\n=================')
 			console.log('battleID: ', window.sessionStorage.getItem('battleID'))
 			this.battleID = window.sessionStorage.getItem('battleID')
 			window.sessionStorage.setItem('battleID', this.battleID)

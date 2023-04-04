@@ -8,8 +8,8 @@
 		</div>	
 
 		<div class="bp-main-area">
-			<div v-for="count in counts">
-				<MonsterInstance />
+			<div v-for="(count, index) in counts">
+				<MonsterInstance :monsterObject="monsters[index]" />
 			</div>
 		</div>
 
@@ -17,15 +17,43 @@
 </template>
 
 <script>
+import {getMonsterBattles} from '@/services/UserServices'
+import MonsterInstance from '../MonsterInstanceComponents/MonsterInstance'
+
 export default {
 	name: 'BattlePage',
 	data() {
 		return {
-			battleID: ''
+			battleID: '',
+			counts: 0,
+			monsters: []
+		}
+	},
+	components: {
+		MonsterInstance
+	},   
+	methods: {
+		startupFunction() {
+			// Grab battleID, display to console, then set this.battleID, then store in window
+			console.log('=================\n== Battle Page ==\n=================')
+			console.log('battleID: ', window.sessionStorage.getItem('battleID'))
+			this.battleID = window.sessionStorage.getItem('battleID')
+			window.sessionStorage.setItem('battleID', this.battleID)
+			
+			// Make db call
+			getMonsterBattles().then(response => {
+				console.log('response: ', response)
+				this.monsters = response
+				this.counts = this.monsters.length
+				console.log('monsters: ', this.monsters, '\ncounts: ', this.counts)
+			})
+		
+			// Set component data
+			
 		}
 	},
 	mounted: function() {
-		console.log('battleID: ', window.sessionStorage.getItem('battleID'))
+		this.startupFunction()
 	}
 }
 </script>

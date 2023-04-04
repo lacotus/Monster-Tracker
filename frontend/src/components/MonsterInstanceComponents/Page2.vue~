@@ -1,5 +1,5 @@
 <template>
-	<div id="Page2Container" class="row" style="height: 75%;" >
+	<div id="Page2Container" class="row testBackground" style="height: 75%;" >
 		<!-- Key: 
 				sa = Special Abilities
 				as = Ability Scores
@@ -13,56 +13,71 @@
 			</div>
 		</div>
 
-		<div id="asContainer" class="row" style="border-radius: 0px 0px 10px 0px" >
+		<div id="asContainer">
+			<label>Str</label>
+			<input>
+			<label>Dex</label>
+			<input>
+			<label>Con</label>
+			<input>
+			<label>Int</label>
+			<input>
+			<label>Wis</label>
+			<input>
+			<label>Cha</label>
+			<input>
+		</div>
+
+		<!--<div id="asContainer" class="row" style="border-radius: 0px 0px 10px 0px" >
 			
-			<!-- Column 1, for labels -->
+			 Column 1, for labels 
 			<div id="col1" ref="col1" class="column" style="width: 50%;">
 				
-				<!-- STR -->
+				 STR 
 				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel" @click="displaySA()">STR</label>
 				</div>
 
-				<!-- DEX -->
+				 DEX 
 				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel" @click="saveData()">DEX</label>
 				</div>
 
-				<!-- CON -->
+				 CON 
 				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel">CON</label>
 				</div>
 
-				<!-- INT -->
+				 INT 
 				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel">INT</label>
 				</div>
 
-				<!-- WIS -->
+				 WIS 
 				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel">WIS</label>
 				</div>
 
-				<!-- CHA -->
+				 CHA 
 				<div class="asItemSize asLabelContainer centerContent">
 					<label class="asLabel">CHA</label>
 				</div>
 			
 			</div>
 			
-			<!-- Column 2, for inputs -->
+			 Column 2, for inputs 
 			<div id="col2" class="column" style="width: 50%;">
 
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.str"></div> <!-- STR -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.dex"></div> <!-- DEX -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.con"></div> <!-- CON -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.inn"></div> <!-- INT -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.wis"></div> <!-- WIS -->
-				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.cha"></div> <!-- CHA -->
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.str"></div>  STR 
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.dex"></div>  DEX 
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.con"></div>  CON 
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.inn"></div>  INT 
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.wis"></div>  WIS 
+				<div class="asItemSize"><input style="width: 90%; height: 90%;" v-model="arrAllData.cha"></div>  CHA 
 
 			</div>
 					
-		</div>
+		</div>-->
 
 	</div>
 </template>
@@ -86,6 +101,8 @@ export default {
 	},
 	methods: {
 		saveData: function () {
+			console.log(this.arrAllData.str);
+
 			const data = JSON.stringify(this.arrAllData);
 			window.localStorage.setItem('arrAllData', data);
 			console.log(JSON.parse(window.localStorage.getItem('arrAllData')));
@@ -169,6 +186,10 @@ export default {
 
 	/* ID Selector */
 	#asContainer {
+		align-items: center;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+
 		width: 33.3%;
 		height: 100%;
 	}	

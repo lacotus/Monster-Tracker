@@ -21,15 +21,11 @@ handled
 
 60. Fill MonsterInstance components with the correct data
 
-63. Fix divTopBar CSS
-
 64. Fix Page1 CSS
 
 65. Fix Page2 Css
 
-66. Seperate frontend calculation functions into their own class
-
-===============
+==============
 == Completed ==
 ===============
 1.  Setup top bar (MainHeader.vue) - done
@@ -92,6 +88,19 @@ of intInput, put a style tag in to adjust border radius
 59. Create MonsterInstance components for each monster in data - done
 61. Remove alert in BattleLists - done
 62. Break MonsterInstance's mounted function into a separate functions - done
+67. Reorganize components folder - done
+69. Write function to make text larger again - done
+70. Fix glitch where spaces are removed when text is resized - done
+71. Complete text resizing in name textarea - done
+73. Remove two lines in the bottom right of name textarea - done
+63. Fix divTopBar CSS - done
+
+============
+== Paused ==
+============
+
+72. Vertically align text in name textarea - pause
+68. Fix BattlePage top bar CSS - pause
 
 ===========
 == Notes ==
