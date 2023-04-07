@@ -14,17 +14,17 @@
 		</div>
 
 		<div id="asContainer">
-			<label>Str</label>
+			<label id="lblStr" class="asLabel">Str</label>
 			<input>
-			<label>Dex</label>
+			<label id="lblDex" class="asLabel">Dex</label>
 			<input>
-			<label>Con</label>
+			<label id="lblCon" class="asLabel">Con</label>
 			<input>
-			<label>Int</label>
+			<label id="lblInt" class="asLabel">Int</label>
 			<input>
-			<label>Wis</label>
+			<label id="lblWis" class="asLabel">Wis</label>
 			<input>
-			<label>Cha</label>
+			<label id="lblCha" class="asLabel">Cha</label>
 			<input>
 		</div>
 
@@ -133,7 +133,10 @@ export default {
 	}
 
 	.asLabel {
+		background: black;
+		border-radius: 5px;
 		color: white;
+		margin: 5px;
 	}
 
 	.centerContent {
@@ -189,15 +192,13 @@ export default {
 		align-items: center;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
+		grid-row-gap: 0px;
 
 		width: 33.3%;
 		height: 100%;
-	}	
-
-	#asContainer > * {
-		margin-top: 7.5px;
-		margin-bottom: 7.5px;
 	}
+
+	#asContainer > * {}
 
 	#saContainer {
 		width: 66.6%;
