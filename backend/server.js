@@ -43,25 +43,22 @@ app.get('/', (req, res) => {
 })
 
 app.get('/getMySqlStatus', (req, res) => {
-	
-	connection.ping((err) => {
-		if (err) return res.status(500).send("MySQL server is down");
-
-		res.send('MySQL server is active');
-	})	
+    db.promise().query("SELECT 1")
+        .then(() => res.send('MySQL server is active'))
+        .catch(() => res.status(500).send("MySQL server is down"));	
 })
 
 app.get('/api/users', (req, res) => {
-	console.log('api/users called!')
-	res.json(users)
-
-	connection.query("SELECT * FROM TUsers", function (err, result, fields) {
-		if (err) throw err;
-
-		console.log("Queried results: ", result);
-	})
-
-	connection.end()
+  console.log('api/userscalled!')
+  res.json(users)
+  
+  db.promise().query("SELECT*FROMTUsers")
+    .then(([rows])=>{
+    console.log("Queriedresults:",rows);
+    })
+    .catch(err=>{
+    console.error("Errorexecutingquery:",err);
+    });
 });
 
 app.post('/api/user', (req, res) => {
@@ -77,8 +74,7 @@ app.post('/register', (req, res) => {
 	})
 });
 
-app.listen(3000, function () { console.log('Server running at http://localhost:3000') });
-
+app.listen(4000, function () { console.log('Server running at http://localhost:4000') });
 
 // new work space
 app.get('/users', async (req, res) => {
