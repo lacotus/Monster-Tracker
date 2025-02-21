@@ -119,16 +119,12 @@ export default {
 			if (this.validateUsername() == true) {
 				if (this.validatePassword() == true) {
 					return true
-
 				} else {
 					return false
-
 				}
 			} else {
 				return false
-
 			}
-
 		},
 		validateUsername() {
 			
